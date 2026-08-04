@@ -1,0 +1,43 @@
+<UserControl
+    x:Class="PeekVPN.App.Views.ConnectionStates.ConnectedStateView"
+    x:DataType="vm:ConnectedStateViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:conv="using:PeekVPN.App.Converters"
+    xmlns:ctrl="using:PeekVPN.App.Controls"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Spacing="14">
+        <Grid ColumnDefinitions="48,*" ColumnSpacing="12" MinHeight="48">
+            <Border Background="{DynamicResource Brush.Background.IconMuted}"
+                    BorderBrush="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
+                    BorderThickness="2.5"
+                    ClipToBounds="True"
+                    CornerRadius="24"
+                    Height="48"
+                    Width="48">
+                <ctrl:SvgImage
+                    HorizontalAlignment="Stretch"
+                    RasterWidth="96"
+                    SourceUri="{Binding FlagUri}"
+                    Stretch="UniformToFill"
+                    VerticalAlignment="Stretch" />
+            </Border>
+            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
+                <TextBlock FontSize="13" FontWeight="SemiBold"
+                           Foreground="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
+                           Text="{Binding StatusLabel}" />
+            </StackPanel>
+        </Grid>
+        <TextBlock Foreground="{DynamicResource Brush.Text.Danger}" Text="{Binding LastError}" TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Classes="OutlineCta" Command="{Binding DisconnectCommand}" Content="{Binding DisconnectText}" />
+            <Button Classes="IconAction Round" Command="{Binding PauseCommand}" ToolTip.Tip="{Binding PauseText}">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="3" VerticalAlignment="Center">
+                    <Border Background="{DynamicResource Brush.Text.Primary}" CornerRadius="1" Height="12" Width="3" />
+                    <Border Background="{DynamicResource Brush.Text.Primary}" CornerRadius="1" Height="12" Width="3" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

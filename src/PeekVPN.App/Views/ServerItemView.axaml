@@ -1,0 +1,80 @@
+<UserControl
+    x:Class="PeekVPN.App.Views.ServerItemView"
+    x:DataType="vm:ServerItemViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:conv="using:PeekVPN.App.Converters"
+    xmlns:ctrl="using:PeekVPN.App.Controls"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Panel
+        Classes="ServerRowShell"
+        Classes.StateConnected="{Binding IsConnectedHighlight}"
+        Classes.StateConnecting="{Binding IsConnectingHighlight}"
+        Classes.StateIdle="{Binding IsIdle}"
+        Classes.StatePaused="{Binding IsPausedHighlight}">
+        <Border Classes="ServerRowBg" />
+        <Rectangle Classes="ServerRowDash" />
+        <Button
+            Classes="ServerRow"
+            Command="{Binding ConnectServerCommand}"
+            CommandParameter="{Binding}">
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+                <Border
+                    Background="{DynamicResource Brush.Background.IconMuted}"
+                    ClipToBounds="True"
+                    CornerRadius="14"
+                    Height="28"
+                    IsHitTestVisible="False"
+                    VerticalAlignment="Center"
+                    Width="28">
+                    <Panel>
+                        <TextBlock
+                            FontSize="9"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource Brush.Text.Primary}"
+                            HorizontalAlignment="Center"
+                            Text="{Binding CountryCode}"
+                            VerticalAlignment="Center" />
+                        <ctrl:SvgImage
+                            HorizontalAlignment="Stretch"
+                            RasterWidth="56"
+                            SourceUri="{Binding FlagUri}"
+                            Stretch="UniformToFill"
+                            VerticalAlignment="Stretch" />
+                    </Panel>
+                </Border>
+                <StackPanel Grid.Column="1" IsHitTestVisible="False" Spacing="0" VerticalAlignment="Center">
+                    <TextBlock
+                        FontSize="12"
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource Brush.Text.Primary}"
+                        Text="{Binding Country}"
+                        TextTrimming="CharacterEllipsis" />
+                    <TextBlock
+                        FontSize="10"
+                        Foreground="{DynamicResource Brush.Text.Secondary}"
+                        Text="{Binding CityLabel}"
+                        TextTrimming="CharacterEllipsis" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="2"
+                    IsHitTestVisible="False"
+                    Orientation="Horizontal"
+                    Spacing="5"
+                    VerticalAlignment="Center">
+                    <TextBlock
+                        FontSize="10"
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource Brush.Text.Secondary}"
+                        Text="{Binding LatencyText}"
+                        VerticalAlignment="Center" />
+                    <Ellipse
+                        Fill="{Binding ConnectionState, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}}"
+                        Height="7"
+                        VerticalAlignment="Center"
+                        Width="7" />
+                </StackPanel>
+            </Grid>
+        </Button>
+    </Panel>
+</UserControl>

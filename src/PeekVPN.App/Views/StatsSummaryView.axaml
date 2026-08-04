@@ -1,0 +1,46 @@
+<UserControl
+    d:DesignHeight="220"
+    d:DesignWidth="240"
+    x:Class="PeekVPN.App.Views.StatsSummaryView"
+    x:DataType="vm:StatsSummaryViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    mc:Ignorable="d">
+    <Border Classes="Card" Padding="14">
+        <StackPanel Spacing="8">
+            <TextBlock
+                FontSize="12"
+                FontWeight="SemiBold"
+                Foreground="{DynamicResource Brush.Text.Secondary}"
+                Text="{Binding Title}" />
+
+            <StackPanel Spacing="2">
+                <TextBlock
+                    FontSize="11"
+                    Foreground="{DynamicResource Brush.Text.Muted}"
+                    Text="{Binding PingLabel}" />
+                <TextBlock
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    Foreground="{DynamicResource Brush.Text.Primary}"
+                    Text="{Binding PingValue}" />
+            </StackPanel>
+
+            <StackPanel Spacing="2">
+                <TextBlock
+                    FontSize="11"
+                    Foreground="{DynamicResource Brush.Text.Muted}"
+                    Text="{Binding SpeedLabel}" />
+                <TextBlock
+                    FontSize="12"
+                    FontWeight="SemiBold"
+                    Foreground="{DynamicResource Brush.Text.Primary}"
+                    Text="{Binding SpeedValue}"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

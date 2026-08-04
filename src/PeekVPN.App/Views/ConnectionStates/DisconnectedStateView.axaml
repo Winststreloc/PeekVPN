@@ -1,0 +1,20 @@
+<UserControl
+    x:Class="PeekVPN.App.Views.ConnectionStates.DisconnectedStateView"
+    x:DataType="vm:DisconnectedStateViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:conv="using:PeekVPN.App.Converters"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Spacing="14">
+        <Grid ColumnDefinitions="48,*" ColumnSpacing="12" MinHeight="48">
+            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
+                <TextBlock FontSize="13" FontWeight="SemiBold"
+                           Foreground="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
+                           Text="{Binding StatusLabel}" />
+            </StackPanel>
+        </Grid>
+        <TextBlock Foreground="{DynamicResource Brush.Text.Danger}" Text="{Binding LastError}" TextWrapping="Wrap" />
+        <Button Classes="PrimaryCta" Command="{Binding ConnectCommand}" Content="{Binding ConnectText}" />
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PeekVPN.Contracts/PeekVPN.Contracts.csproj" />
+    <Project Path="src/PeekVPN.Core/PeekVPN.Core.csproj" />
+    <Project Path="src/PeekVPN.Core.Tests/PeekVPN.Core.Tests.csproj" />
+    <Project Path="src/PeekVPN.Infrastructure/PeekVPN.Infrastructure.csproj" />
+    <Project Path="src/PeekVPN.App/PeekVPN.App.csproj" />
+  </Folder>
+</Solution>

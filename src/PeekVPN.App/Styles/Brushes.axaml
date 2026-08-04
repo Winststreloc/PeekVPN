@@ -1,0 +1,48 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="Brush.Background.App" Color="{StaticResource Color.Background.App}"/>
+    <SolidColorBrush x:Key="Brush.Background.Surface" Color="{StaticResource Color.Background.Surface}"/>
+    <SolidColorBrush x:Key="Brush.Background.Card" Color="{StaticResource Color.Background.Card}"/>
+    <SolidColorBrush x:Key="Brush.Background.Sidebar" Color="{StaticResource Color.Background.Sidebar}"/>
+    <SolidColorBrush x:Key="Brush.Background.NavActive" Color="{StaticResource Color.Background.NavActive}"/>
+    <SolidColorBrush x:Key="Brush.Background.Search" Color="{StaticResource Color.Background.Search}"/>
+    <SolidColorBrush x:Key="Brush.Background.Upsell" Color="{StaticResource Color.Background.Upsell}"/>
+    <SolidColorBrush x:Key="Brush.Background.ButtonDark" Color="{StaticResource Color.Background.ButtonDark}"/>
+    <SolidColorBrush x:Key="Brush.Background.IconMuted" Color="{StaticResource Color.Background.IconMuted}"/>
+
+    <SolidColorBrush x:Key="Brush.Text.Primary" Color="{StaticResource Color.Text.Primary}"/>
+    <SolidColorBrush x:Key="Brush.Text.Secondary" Color="{StaticResource Color.Text.Secondary}"/>
+    <SolidColorBrush x:Key="Brush.Text.Muted" Color="{StaticResource Color.Text.Muted}"/>
+    <SolidColorBrush x:Key="Brush.Text.OnAccent" Color="{StaticResource Color.Text.OnAccent}"/>
+    <SolidColorBrush x:Key="Brush.Text.OnDark" Color="{StaticResource Color.Text.OnDark}"/>
+    <SolidColorBrush x:Key="Brush.Text.Danger" Color="{StaticResource Color.Text.Danger}"/>
+    <SolidColorBrush x:Key="Brush.Text.Link" Color="{StaticResource Color.Text.Link}"/>
+
+    <SolidColorBrush x:Key="Brush.Accent.Primary" Color="{StaticResource Color.Accent.Primary}"/>
+    <SolidColorBrush x:Key="Brush.Accent.PrimaryHover" Color="{StaticResource Color.Accent.PrimaryHover}"/>
+    <SolidColorBrush x:Key="Brush.Brand.Shield" Color="{StaticResource Color.Brand.Shield}"/>
+
+    <SolidColorBrush x:Key="Brush.Status.Danger" Color="{StaticResource Color.Status.Danger}"/>
+    <SolidColorBrush x:Key="Brush.Status.Success" Color="{StaticResource Color.Status.Success}"/>
+    <SolidColorBrush x:Key="Brush.Status.Warning" Color="{StaticResource Color.Status.Warning}"/>
+    <SolidColorBrush x:Key="Brush.Status.Neutral" Color="{StaticResource Color.Status.Neutral}"/>
+    <SolidColorBrush x:Key="Brush.Status.ActiveBadge" Color="{StaticResource Color.Status.ActiveBadge}"/>
+    <SolidColorBrush x:Key="Brush.Status.ActiveBadgeText" Color="{StaticResource Color.Status.ActiveBadgeText}"/>
+    <SolidColorBrush x:Key="Brush.Status.LiteBadge" Color="{StaticResource Color.Status.LiteBadge}"/>
+
+    <SolidColorBrush x:Key="Brush.Border.Subtle" Color="{StaticResource Color.Border.Subtle}"/>
+    <SolidColorBrush x:Key="Brush.Border.Card" Color="{StaticResource Color.Border.Card}"/>
+
+    <SolidColorBrush x:Key="Brush.Server.Connected" Color="{StaticResource Color.Server.Connected}"/>
+    <SolidColorBrush x:Key="Brush.Server.ConnectedHover" Color="{StaticResource Color.Server.ConnectedHover}"/>
+    <SolidColorBrush x:Key="Brush.Server.Connecting" Color="{StaticResource Color.Server.Connecting}"/>
+    <SolidColorBrush x:Key="Brush.Server.ConnectingHover" Color="{StaticResource Color.Server.ConnectingHover}"/>
+    <SolidColorBrush x:Key="Brush.Server.Paused" Color="{StaticResource Color.Server.Paused}"/>
+    <SolidColorBrush x:Key="Brush.Server.PausedHover" Color="{StaticResource Color.Server.PausedHover}"/>
+    <SolidColorBrush x:Key="Brush.Server.BorderConnected" Color="{StaticResource Color.Server.BorderConnected}"/>
+    <SolidColorBrush x:Key="Brush.Server.BorderConnecting" Color="{StaticResource Color.Server.BorderConnecting}"/>
+    <SolidColorBrush x:Key="Brush.Server.BorderPaused" Color="{StaticResource Color.Server.BorderPaused}"/>
+    <SolidColorBrush x:Key="Brush.Map.Land" Color="{StaticResource Color.Map.Land}"/>
+    <SolidColorBrush x:Key="Brush.Map.Water" Color="{StaticResource Color.Map.Water}"/>
+    <SolidColorBrush x:Key="Brush.Map.Marker" Color="{StaticResource Color.Map.Marker}"/>
+</ResourceDictionary>

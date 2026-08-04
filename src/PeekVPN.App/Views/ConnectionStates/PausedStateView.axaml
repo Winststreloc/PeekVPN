@@ -1,0 +1,42 @@
+<UserControl
+    x:Class="PeekVPN.App.Views.ConnectionStates.PausedStateView"
+    x:DataType="vm:PausedStateViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:conv="using:PeekVPN.App.Converters"
+    xmlns:ctrl="using:PeekVPN.App.Controls"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Spacing="14">
+        <Grid ColumnDefinitions="48,*" ColumnSpacing="12" MinHeight="48">
+            <Border Background="{DynamicResource Brush.Background.IconMuted}"
+                    BorderBrush="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
+                    BorderThickness="2.5"
+                    ClipToBounds="True"
+                    CornerRadius="24"
+                    Height="48"
+                    Width="48">
+                <ctrl:SvgImage
+                    HorizontalAlignment="Stretch"
+                    RasterWidth="96"
+                    SourceUri="{Binding FlagUri}"
+                    Stretch="UniformToFill"
+                    VerticalAlignment="Stretch" />
+            </Border>
+            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
+                <TextBlock FontSize="13" FontWeight="SemiBold"
+                           Foreground="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
+                           Text="{Binding StatusLabel}" />
+            </StackPanel>
+        </Grid>
+        <TextBlock Foreground="{DynamicResource Brush.Text.Danger}" Text="{Binding LastError}" TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Classes="OutlineCta" Command="{Binding DisconnectCommand}" Content="{Binding DisconnectText}" />
+            <Button Classes="IconAction Round" Command="{Binding ResumeCommand}" ToolTip.Tip="{Binding ResumeText}">
+                <Viewbox Height="14" Width="14">
+                    <Path Data="M4,3 L16,10 L4,17 Z" Fill="{DynamicResource Brush.Text.Primary}" />
+                </Viewbox>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

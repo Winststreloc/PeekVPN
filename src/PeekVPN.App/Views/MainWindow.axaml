@@ -1,0 +1,21 @@
+<Window
+    Background="{DynamicResource Brush.Background.App}"
+    Height="840"
+    Icon="/Assets/main.ico"
+    MinHeight="640"
+    MinWidth="960"
+    Title="{Binding AppTitle}"
+    Width="1280"
+    d:DesignHeight="840"
+    d:DesignWidth="1280"
+    mc:Ignorable="d"
+    x:Class="PeekVPN.App.Views.MainWindow"
+    x:DataType="vm:ShellViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:views="using:PeekVPN.App.Views"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <views:ShellView />
+</Window>

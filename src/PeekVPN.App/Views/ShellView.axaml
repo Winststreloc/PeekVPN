@@ -1,0 +1,85 @@
+<UserControl
+    x:Class="PeekVPN.App.Views.ShellView"
+    x:DataType="vm:ShellViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:views="using:PeekVPN.App.Views"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid ColumnDefinitions="64,*" ColumnSpacing="16" Margin="20" RowDefinitions="Auto,*" RowSpacing="14">
+        <Border Background="{DynamicResource Brush.Brand.Shield}" CornerRadius="12" Height="40"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Width="40">
+            <TextBlock FontSize="20" Foreground="{DynamicResource Brush.Text.OnDark}"
+                       HorizontalAlignment="Center" Text="⛨" VerticalAlignment="Center" />
+        </Border>
+
+        <Grid Grid.Column="1" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding AppTitle}" VerticalAlignment="Center" />
+            <TextBox Classes="SearchBox" Grid.Column="1" HorizontalAlignment="Right" MinWidth="220"
+                     PlaceholderText="{Binding SearchServersWatermark}" Text="{Binding Workspace.ServerBrowser.SearchQuery}" Width="300" />
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10">
+                <Border Background="{DynamicResource Brush.Background.IconMuted}" CornerRadius="20" Height="40" Width="40" />
+                <Border Background="{DynamicResource Brush.Background.IconMuted}" CornerRadius="20" Height="40" Width="40" />
+            </StackPanel>
+        </Grid>
+
+        <Border Background="{DynamicResource Brush.Background.Sidebar}" CornerRadius="20" Grid.Row="1" Padding="10">
+            <Grid RowDefinitions="*,Auto">
+                <StackPanel HorizontalAlignment="Center" Spacing="8">
+                    <Button Classes="NavIcon Active" ToolTip.Tip="{Binding NavMap}">
+                        <Viewbox Height="20" Width="20">
+                            <Canvas Height="24" Width="24">
+                                <Ellipse Canvas.Left="2" Canvas.Top="2" Fill="Transparent" Height="20"
+                                         Stroke="{DynamicResource Brush.Text.Primary}" StrokeThickness="1.8" Width="20" />
+                                <Ellipse Canvas.Left="8" Canvas.Top="2" Fill="Transparent" Height="20"
+                                         Stroke="{DynamicResource Brush.Text.Primary}" StrokeThickness="1.5" Width="8" />
+                                <Line EndPoint="22,12" StartPoint="2,12" Stroke="{DynamicResource Brush.Text.Primary}" StrokeThickness="1.5" />
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
+                    <Button Classes="NavIcon" ToolTip.Tip="{Binding NavStatistic}">
+                        <Viewbox Height="18" Width="18">
+                            <Canvas Height="24" Width="24">
+                                <Rectangle Canvas.Left="3" Canvas.Top="14" Fill="{DynamicResource Brush.Text.Secondary}" Height="7" RadiusX="1" RadiusY="1" Width="4" />
+                                <Rectangle Canvas.Left="10" Canvas.Top="8" Fill="{DynamicResource Brush.Text.Secondary}" Height="13" RadiusX="1" RadiusY="1" Width="4" />
+                                <Rectangle Canvas.Left="17" Canvas.Top="4" Fill="{DynamicResource Brush.Text.Secondary}" Height="17" RadiusX="1" RadiusY="1" Width="4" />
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
+                    <Button Classes="NavIcon" ToolTip.Tip="{Binding NavProfile}">
+                        <Viewbox Height="18" Width="18">
+                            <Canvas Height="24" Width="24">
+                                <Ellipse Canvas.Left="7" Canvas.Top="3" Fill="Transparent" Height="10"
+                                         Stroke="{DynamicResource Brush.Text.Secondary}" StrokeThickness="1.7" Width="10" />
+                                <Path Data="M4,21 C4,16.5 8,14 12,14 C16,14 20,16.5 20,21"
+                                      Fill="Transparent" Stroke="{DynamicResource Brush.Text.Secondary}" StrokeThickness="1.7" />
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
+                    <Button Classes="NavIcon" ToolTip.Tip="{Binding NavSettings}">
+                        <Viewbox Height="18" Width="18">
+                            <Canvas Height="24" Width="24">
+                                <Ellipse Canvas.Left="8" Canvas.Top="8" Fill="Transparent" Height="8"
+                                         Stroke="{DynamicResource Brush.Text.Secondary}" StrokeThickness="1.7" Width="8" />
+                                <Ellipse Canvas.Left="2" Canvas.Top="2" Fill="Transparent" Height="20"
+                                         Stroke="{DynamicResource Brush.Text.Secondary}" StrokeDashArray="2,2.2" StrokeThickness="1.5" Width="20" />
+                            </Canvas>
+                        </Viewbox>
+                    </Button>
+                </StackPanel>
+                <Button Classes="NavIcon Power" Command="{Binding ExitAppCommand}" Grid.Row="1"
+                        HorizontalAlignment="Center" ToolTip.Tip="Power">
+                    <Viewbox Height="18" Width="18">
+                        <Canvas Height="24" Width="24">
+                            <Line EndPoint="12,12" StartPoint="12,3" Stroke="{DynamicResource Brush.Text.Danger}"
+                                  StrokeLineCap="Round" StrokeThickness="2" />
+                            <Path Data="M7,6.5 A7,7 0 1 0 17,6.5" Fill="Transparent"
+                                  Stroke="{DynamicResource Brush.Text.Danger}" StrokeLineCap="Round" StrokeThickness="1.8" />
+                        </Canvas>
+                    </Viewbox>
+                </Button>
+            </Grid>
+        </Border>
+
+        <views:WorkspaceView Grid.Column="1" Grid.Row="1" DataContext="{Binding Workspace}" />
+    </Grid>
+</UserControl>

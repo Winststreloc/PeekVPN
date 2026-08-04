@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="PeekVPN/Views/MainWindow.axaml" value="PeekVPN/PeekVPN.csproj" />
+        <entry key="src/PeekVPN.App/App.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Styles/Brushes.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Styles/Colors.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/ConnectionPanelView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/FeatureCardView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/FeatureCardsView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/MainWindow.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/MapView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/ServerBrowserView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/ServerItemView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/StatsSummaryView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

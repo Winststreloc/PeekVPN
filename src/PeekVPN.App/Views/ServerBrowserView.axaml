@@ -1,0 +1,126 @@
+<UserControl
+    mc:Ignorable="d"
+    x:Class="PeekVPN.App.Views.ServerBrowserView"
+    x:DataType="vm:ServerBrowserViewModel"
+    x:Name="ServerBrowser"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:PeekVPN.App.Views"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Styles>
+        <Style Selector="Panel.ServerRowShell">
+            <Setter Property="Margin" Value="0,2" />
+        </Style>
+        <Style Selector="Border.ServerRowBg">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StateConnected Border.ServerRowBg">
+            <Setter Property="Background" Value="{DynamicResource Brush.Server.Connected}" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StateConnected:pointerover Border.ServerRowBg">
+            <Setter Property="Background" Value="{DynamicResource Brush.Server.ConnectedHover}" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StateConnecting Border.ServerRowBg">
+            <Setter Property="Background" Value="{DynamicResource Brush.Server.Connecting}" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StateConnecting:pointerover Border.ServerRowBg">
+            <Setter Property="Background" Value="{DynamicResource Brush.Server.ConnectingHover}" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StatePaused Border.ServerRowBg">
+            <Setter Property="Background" Value="{DynamicResource Brush.Server.Paused}" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StatePaused:pointerover Border.ServerRowBg">
+            <Setter Property="Background" Value="{DynamicResource Brush.Server.PausedHover}" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StateIdle:pointerover Border.ServerRowBg">
+            <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
+        </Style>
+        <Style Selector="Rectangle.ServerRowDash">
+            <Setter Property="IsVisible" Value="False" />
+            <Setter Property="StrokeThickness" Value="1.5" />
+            <Setter Property="StrokeDashArray" Value="3,2" />
+            <Setter Property="RadiusX" Value="10" />
+            <Setter Property="RadiusY" Value="10" />
+            <Setter Property="IsHitTestVisible" Value="False" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StateConnected Rectangle.ServerRowDash">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Stroke" Value="{DynamicResource Brush.Server.BorderConnected}" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StateConnecting Rectangle.ServerRowDash">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Stroke" Value="{DynamicResource Brush.Server.BorderConnecting}" />
+        </Style>
+        <Style Selector="Panel.ServerRowShell.StatePaused Rectangle.ServerRowDash">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Stroke" Value="{DynamicResource Brush.Server.BorderPaused}" />
+        </Style>
+        <Style Selector="Button.ServerRow">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="8,6" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style Selector="Button.ServerRow:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <Style Selector="Button.ServerRow:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <Style Selector="Button.ServerRow:disabled">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+    </UserControl.Styles>
+
+    <UserControl.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:ServerItemViewModel}">
+            <views:ServerItemView />
+        </DataTemplate>
+    </UserControl.DataTemplates>
+
+    <Border Classes="Card" Padding="12">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*" RowSpacing="4">
+            <TextBlock
+                FontSize="12"
+                FontWeight="SemiBold"
+                Foreground="{DynamicResource Brush.Text.Secondary}"
+                Text="{Binding RecentConnectionsTitle}" />
+            <TextBlock
+                FontSize="11"
+                Foreground="{DynamicResource Brush.Text.Muted}"
+                Grid.Row="1"
+                IsVisible="{Binding StatusMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                Text="{Binding StatusMessage}" />
+            <StackPanel Grid.Row="2" Spacing="0">
+                <TextBlock
+                    FontSize="11"
+                    Foreground="{DynamicResource Brush.Text.Muted}"
+                    IsVisible="{Binding RecentEmptyMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                    Margin="0,0,0,4"
+                    Text="{Binding RecentEmptyMessage}"
+                    TextWrapping="Wrap" />
+                <ItemsControl ItemsSource="{Binding RecentServers}" />
+            </StackPanel>
+            <TextBlock
+                FontSize="12"
+                FontWeight="SemiBold"
+                Foreground="{DynamicResource Brush.Text.Secondary}"
+                Grid.Row="3"
+                Margin="0,8,0,0"
+                Text="{Binding AllServersTitle}" />
+            <ScrollViewer
+                Grid.Row="4"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding FilteredServers}" />
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>
