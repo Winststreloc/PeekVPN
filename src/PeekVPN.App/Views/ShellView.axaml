@@ -2,6 +2,7 @@
     x:Class="PeekVPN.App.Views.ShellView"
     x:DataType="vm:ShellViewModel"
     xmlns="https://github.com/avaloniaui"
+    xmlns:conv="using:PeekVPN.App.Converters"
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:views="using:PeekVPN.App.Views"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -12,20 +13,23 @@
                        HorizontalAlignment="Center" Text="⛨" VerticalAlignment="Center" />
         </Border>
 
-        <Grid Grid.Column="1" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="14">
             <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding AppTitle}" VerticalAlignment="Center" />
-            <TextBox Classes="SearchBox" Grid.Column="1" HorizontalAlignment="Right" MinWidth="220"
-                     PlaceholderText="{Binding SearchServersWatermark}" Text="{Binding Workspace.ServerBrowser.SearchQuery}" Width="300" />
-            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10">
-                <Border Background="{DynamicResource Brush.Background.IconMuted}" CornerRadius="20" Height="40" Width="40" />
-                <Border Background="{DynamicResource Brush.Background.IconMuted}" CornerRadius="20" Height="40" Width="40" />
+            <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                <Ellipse Fill="{Binding Workspace.ConnectionPanel.ActiveState.State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
+                         Height="8" VerticalAlignment="Center" Width="8" />
+                <TextBlock FontSize="13" FontWeight="SemiBold"
+                           Foreground="{Binding Workspace.ConnectionPanel.ActiveState.State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
+                           Text="{Binding Workspace.ConnectionPanel.ActiveState.StatusLabel}"
+                           VerticalAlignment="Center" />
             </StackPanel>
-        </Grid>
+        </StackPanel>
 
         <Border Background="{DynamicResource Brush.Background.Sidebar}" CornerRadius="20" Grid.Row="1" Padding="10">
             <Grid RowDefinitions="*,Auto">
                 <StackPanel HorizontalAlignment="Center" Spacing="8">
-                    <Button Classes="NavIcon Active" ToolTip.Tip="{Binding NavMap}">
+                    <Button Classes="NavIcon" Classes.active="{Binding IsMapActive}" Command="{Binding NavigateToCommand}"
+                            CommandParameter="{x:Static vm:ShellPage.Map}" ToolTip.Tip="{Binding NavMap}">
                         <Viewbox Height="20" Width="20">
                             <Canvas Height="24" Width="24">
                                 <Ellipse Canvas.Left="2" Canvas.Top="2" Fill="Transparent" Height="20"
@@ -36,7 +40,8 @@
                             </Canvas>
                         </Viewbox>
                     </Button>
-                    <Button Classes="NavIcon" ToolTip.Tip="{Binding NavStatistic}">
+                    <Button Classes="NavIcon" Classes.active="{Binding IsStatisticsActive}" Command="{Binding NavigateToCommand}"
+                            CommandParameter="{x:Static vm:ShellPage.Statistics}" ToolTip.Tip="{Binding NavStatistics}">
                         <Viewbox Height="18" Width="18">
                             <Canvas Height="24" Width="24">
                                 <Rectangle Canvas.Left="3" Canvas.Top="14" Fill="{DynamicResource Brush.Text.Secondary}" Height="7" RadiusX="1" RadiusY="1" Width="4" />
@@ -45,7 +50,8 @@
                             </Canvas>
                         </Viewbox>
                     </Button>
-                    <Button Classes="NavIcon" ToolTip.Tip="{Binding NavProfile}">
+                    <Button Classes="NavIcon" Classes.active="{Binding IsProfileActive}" Command="{Binding NavigateToCommand}"
+                            CommandParameter="{x:Static vm:ShellPage.Profile}" ToolTip.Tip="{Binding NavProfile}">
                         <Viewbox Height="18" Width="18">
                             <Canvas Height="24" Width="24">
                                 <Ellipse Canvas.Left="7" Canvas.Top="3" Fill="Transparent" Height="10"
@@ -55,7 +61,8 @@
                             </Canvas>
                         </Viewbox>
                     </Button>
-                    <Button Classes="NavIcon" ToolTip.Tip="{Binding NavSettings}">
+                    <Button Classes="NavIcon" Classes.active="{Binding IsSettingsActive}" Command="{Binding NavigateToCommand}"
+                            CommandParameter="{x:Static vm:ShellPage.Settings}" ToolTip.Tip="{Binding NavSettings}">
                         <Viewbox Height="18" Width="18">
                             <Canvas Height="24" Width="24">
                                 <Ellipse Canvas.Left="8" Canvas.Top="8" Fill="Transparent" Height="8"
@@ -80,6 +87,6 @@
             </Grid>
         </Border>
 
-        <views:WorkspaceView Grid.Column="1" Grid.Row="1" DataContext="{Binding Workspace}" />
+        <ContentControl Content="{Binding CurrentPage}" Grid.Column="1" Grid.Row="1" />
     </Grid>
 </UserControl>

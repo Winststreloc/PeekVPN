@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+option csharp_namespace = "PeekVPN.Contracts.Grpc";
+
+package peekvpn;
+
+service VpnService {
+  rpc GetServers (GetServersRequest) returns (GetServersResponse);
+  rpc Connect (ConnectRequest) returns (ConnectionStatus);
+  rpc Disconnect (DisconnectRequest) returns (ConnectionStatus);
+  rpc Cancel (CancelRequest) returns (ConnectionStatus);
+  rpc Pause (PauseRequest) returns (ConnectionStatus);
+  rpc Resume (ResumeRequest) returns (ConnectionStatus);
+  rpc GetStatus (GetStatusRequest) returns (ConnectionStatus);
+  rpc SubscribeStatus (SubscribeStatusRequest) returns (stream ConnectionStatus);
+}
+
+enum VpnConnectionState {
+  DISCONNECTED = 0;
+  CONNECTING = 1;
+  CONNECTED = 2;
+  PAUSED = 3;
+  DISCONNECTING = 4;
+}
+
+message VpnServer {
+  string id = 1;
+  string city = 2;
+  string country = 3;
+  string country_code = 4;
+  int32 latency_ms = 5;
+  string display_name = 6;
+  double latitude = 7;
+  double longitude = 8;
+}
+
+message GetServersRequest {}
+
+message GetServersResponse {
+  repeated VpnServer servers = 1;
+}
+
+message ConnectRequest {
+  string protocol = 1;
+  string server_id = 2;
+  bytes credentials = 3;
+  ConnectionOptions options = 4;
+}
+
+message ConnectionOptions {
+  bool kill_switch = 1;
+  bool split_tunnel = 2;
+  repeated string allowed_ips = 3;
+}
+
+message DisconnectRequest {}
+
+message CancelRequest {}
+
+message PauseRequest {}
+
+message ResumeRequest {}
+
+message GetStatusRequest {}
+
+message SubscribeStatusRequest {}
+
+message ConnectionStatus {
+  VpnConnectionState state = 1;
+  string active_server_id = 2;
+  string last_error = 3;
+}

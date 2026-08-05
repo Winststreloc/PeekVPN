@@ -1,0 +1,152 @@
+<UserControl
+    x:Class="PeekVPN.App.Views.SettingsPageView"
+    x:DataType="vm:SettingsPageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <Grid MaxWidth="1040" ColumnDefinitions="210,*" ColumnSpacing="32">
+            <StackPanel Spacing="4">
+                <Button Classes="SettingsNavigation" Classes.active="{Binding IsGeneralSelected}" Command="{Binding SelectSectionCommand}" CommandParameter="{x:Static vm:SettingsSection.General}" Content="{Binding GeneralSectionTitle}" />
+                <Button Classes="SettingsNavigation" Classes.active="{Binding IsVpnConnectionSelected}" Command="{Binding SelectSectionCommand}" CommandParameter="{x:Static vm:SettingsSection.VpnConnection}" Content="{Binding VpnConnectionSectionTitle}" />
+                <Button Classes="SettingsNavigation" Classes.active="{Binding IsSecurityAndPrivacySelected}" Command="{Binding SelectSectionCommand}" CommandParameter="{x:Static vm:SettingsSection.SecurityAndPrivacy}" Content="{Binding SecurityAndPrivacySectionTitle}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Spacing="18">
+                <StackPanel IsVisible="{Binding IsVpnConnectionSelected}" Spacing="12">
+                    <Border Classes="Card" Padding="4">
+                        <StackPanel>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding AutoConnectTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding AutoConnectDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ToggleSwitch Grid.Column="1" IsChecked="{Binding AutoConnect}" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding AutoConnectTargetTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding AutoConnectTargetDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding FastestServer}" VerticalAlignment="Center" />
+                                    <ToggleSwitch IsChecked="{Binding AutoConnectUseFastestServer}" />
+                                </StackPanel>
+                            </Grid>
+                            <Grid Classes="SettingRow Last" ColumnDefinitions="*,220" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding AutoConnectServerTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding AutoConnectServerDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ComboBox Grid.Column="1" IsEnabled="{Binding IsAutoConnectServerSelectionEnabled}" ItemsSource="{Binding AutoConnectServers}" SelectedItem="{Binding AutoConnectServer}" VerticalAlignment="Center" />
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Classes="Card" Padding="4">
+                        <StackPanel>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding SplitTunnelingTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding SplitTunnelingDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ToggleSwitch Grid.Column="1" IsChecked="{Binding SplitTunneling}" VerticalAlignment="Center" />
+                            </Grid>
+                            <StackPanel Margin="16,0,16,16" Spacing="16">
+                                <Border Classes="SettingsSubsection">
+                                    <StackPanel Spacing="10">
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                            <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding SplitTunnelingDomainsTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding SplitTunnelingDomainsDescription}" TextWrapping="Wrap" /></StackPanel>
+                                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding SplitTunnelingForDomains}" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <StackPanel IsEnabled="{Binding SplitTunnelingForDomains}" Spacing="8">
+                                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                                <TextBox PlaceholderText="{Binding SplitTunnelingAddDomainWatermark}" Text="{Binding NewSplitTunnelingDomain}" />
+                                                <Button Grid.Column="1" Classes="OutlineCta" Command="{Binding AddSplitTunnelingDomainCommand}" Content="{Binding SplitTunnelingAddButton}" />
+                                            </Grid>
+                                            <TextBlock Classes="SettingDescription" IsVisible="{Binding IsSplitTunnelingDomainsEmpty}" Text="{Binding SplitTunnelingDomainsEmpty}" TextWrapping="Wrap" />
+                                            <ItemsControl ItemsSource="{Binding SplitTunnelingDomains}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                                <Border Classes="SettingsSubsection">
+                                    <StackPanel Spacing="10">
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                            <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding SplitTunnelingApplicationsTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding SplitTunnelingApplicationsDescription}" TextWrapping="Wrap" /></StackPanel>
+                                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding SplitTunnelingForApplications}" VerticalAlignment="Center" />
+                                        </Grid>
+                                        <StackPanel IsEnabled="{Binding SplitTunnelingForApplications}" Spacing="8">
+                                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                                <TextBox PlaceholderText="{Binding SplitTunnelingAddApplicationWatermark}" Text="{Binding NewSplitTunnelingApplication}" />
+                                                <Button Grid.Column="1" Classes="OutlineCta" Command="{Binding AddSplitTunnelingApplicationCommand}" Content="{Binding SplitTunnelingAddButton}" />
+                                            </Grid>
+                                            <TextBlock Classes="SettingDescription" IsVisible="{Binding IsSplitTunnelingApplicationsEmpty}" Text="{Binding SplitTunnelingApplicationsEmpty}" TextWrapping="Wrap" />
+                                            <ItemsControl ItemsSource="{Binding SplitTunnelingApplications}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Classes="Card" Padding="4">
+                        <StackPanel>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding KillSwitchTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding KillSwitchDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ToggleSwitch Grid.Column="1" IsChecked="{Binding KillSwitch}" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Classes="SettingRow Last" ColumnDefinitions="*,220" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding KillSwitchModeTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding KillSwitchModeDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding KillSwitchModes}" SelectedItem="{Binding SelectedKillSwitchMode}" VerticalAlignment="Center" />
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Classes="Card" Padding="4">
+                        <Grid Classes="SettingRow Last" ColumnDefinitions="*,220" ColumnSpacing="20">
+                            <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding VpnProtocolTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding VpnProtocolDescription}" TextWrapping="Wrap" /></StackPanel>
+                            <ComboBox Grid.Column="1" ItemsSource="{Binding VpnProtocols}" SelectedItem="{Binding VpnProtocol}" VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel IsVisible="{Binding IsSecurityAndPrivacySelected}" Spacing="12">
+                    <Border Classes="Card" Padding="4">
+                        <Grid Classes="SettingRow Last" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                            <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding CustomDnsTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding CustomDnsDescription}" TextWrapping="Wrap" /></StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="{Binding CustomDns}" VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel IsVisible="{Binding IsGeneralSelected}" Spacing="12">
+                    <Border Classes="Card" Padding="4">
+                        <StackPanel>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,220" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding AppearanceTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding AppearanceDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding AppearanceOptions}" SelectedItem="{Binding Appearance}" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding ShowNotificationsTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding ShowNotificationsDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ToggleSwitch Grid.Column="1" IsChecked="{Binding ShowNotifications}" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding SendAppLogsTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding SendAppLogsDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ToggleSwitch Grid.Column="1" IsChecked="{Binding SendAppLogs}" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding AutoStartupTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding AutoStartupDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ToggleSwitch Grid.Column="1" IsChecked="{Binding AutoStartup}" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding StayHiddenTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding StayHiddenDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ToggleSwitch Grid.Column="1" IsChecked="{Binding StayHidden}" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding AutoUpdatesTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding AutoUpdatesDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ToggleSwitch Grid.Column="1" IsChecked="{Binding AutoUpdates}" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Classes="SettingRow" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding AllowBackgroundProcessesTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding AllowBackgroundProcessesDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <ToggleSwitch Grid.Column="1" IsChecked="{Binding AllowBackgroundProcesses}" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Classes="SettingRow Last" ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                                <StackPanel Spacing="3"><TextBlock FontWeight="SemiBold" Text="{Binding ResetSettingsTitle}" /><TextBlock Classes="SettingDescription" Text="{Binding ResetSettingsDescription}" TextWrapping="Wrap" /></StackPanel>
+                                <Button Grid.Column="1" Classes="OutlineCta" Command="{Binding ResetSettingsCommand}" Content="{Binding ResetSettingsButton}" VerticalAlignment="Center" />
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

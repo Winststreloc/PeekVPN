@@ -6,30 +6,52 @@
     xmlns:ctrl="using:PeekVPN.App.Controls"
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StackPanel Spacing="14">
-        <Grid ColumnDefinitions="48,*" ColumnSpacing="12" MinHeight="48">
-            <Border Background="{DynamicResource Brush.Background.IconMuted}"
-                    BorderBrush="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
-                    BorderThickness="2.5"
-                    ClipToBounds="True"
-                    CornerRadius="24"
-                    Height="48"
-                    Width="48">
-                <ctrl:SvgImage
-                    HorizontalAlignment="Stretch"
-                    RasterWidth="96"
-                    SourceUri="{Binding FlagUri}"
-                    Stretch="UniformToFill"
-                    VerticalAlignment="Stretch" />
-            </Border>
-            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
-                <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
-                <TextBlock FontSize="13" FontWeight="SemiBold"
-                           Foreground="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
-                           Text="{Binding StatusLabel}" />
+    <StackPanel Spacing="8">
+        <Grid ColumnDefinitions="40,*" ColumnSpacing="10" MinHeight="40">
+            <Grid Height="40" Width="40">
+                <Border Background="{DynamicResource Brush.Background.IconMuted}"
+                        ClipToBounds="True"
+                        CornerRadius="16"
+                        Height="32"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="32">
+                    <ctrl:SvgImage
+                        HorizontalAlignment="Stretch"
+                        RasterWidth="96"
+                        SourceUri="{Binding FlagUri}"
+                        Stretch="UniformToFill"
+                        VerticalAlignment="Stretch" />
+                </Border>
+                <Viewbox RenderTransformOrigin="50%,50%">
+                    <Viewbox.RenderTransform>
+                        <RotateTransform />
+                    </Viewbox.RenderTransform>
+                    <Viewbox.Styles>
+                        <Style Selector="Viewbox">
+                            <Style.Animations>
+                                <Animation Duration="0:0:1" IterationCount="Infinite">
+                                    <KeyFrame Cue="0%">
+                                        <Setter Property="RotateTransform.Angle" Value="0" />
+                                    </KeyFrame>
+                                    <KeyFrame Cue="100%">
+                                        <Setter Property="RotateTransform.Angle" Value="360" />
+                                    </KeyFrame>
+                                </Animation>
+                            </Style.Animations>
+                        </Style>
+                    </Viewbox.Styles>
+                    <Path Data="M20,2 A18,18 0 1,1 7.27,7.27"
+                          Stroke="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
+                          StrokeLineCap="Round"
+                          StrokeThickness="2.5" />
+                </Viewbox>
+            </Grid>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
             </StackPanel>
         </Grid>
         <TextBlock Foreground="{DynamicResource Brush.Text.Danger}" Text="{Binding LastError}" TextWrapping="Wrap" />
-        <Button Classes="OutlineCta" Command="{Binding CancelCommand}" Content="{Binding CancelText}" />
+        <Button Classes="OutlineCta CompactConnectionAction" Command="{Binding CancelCommand}" Content="{Binding CancelText}" />
     </StackPanel>
 </UserControl>

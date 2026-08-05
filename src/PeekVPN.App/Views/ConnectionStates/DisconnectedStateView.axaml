@@ -2,19 +2,19 @@
     x:Class="PeekVPN.App.Views.ConnectionStates.DisconnectedStateView"
     x:DataType="vm:DisconnectedStateViewModel"
     xmlns="https://github.com/avaloniaui"
-    xmlns:conv="using:PeekVPN.App.Converters"
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StackPanel Spacing="14">
-        <Grid ColumnDefinitions="48,*" ColumnSpacing="12" MinHeight="48">
-            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
-                <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
-                <TextBlock FontSize="13" FontWeight="SemiBold"
-                           Foreground="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
-                           Text="{Binding StatusLabel}" />
+    <StackPanel Spacing="8">
+        <Grid ColumnDefinitions="40,*" ColumnSpacing="10" MinHeight="40">
+            <Viewbox Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32">
+                <Path Data="M9,18 L9,12 A7,7 0 0,1 21,7 M25,18 L25,31 L7,31 L7,18 Z"
+                      Fill="{DynamicResource Brush.Text.Danger}" />
+            </Viewbox>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
             </StackPanel>
         </Grid>
         <TextBlock Foreground="{DynamicResource Brush.Text.Danger}" Text="{Binding LastError}" TextWrapping="Wrap" />
-        <Button Classes="PrimaryCta" Command="{Binding ConnectCommand}" Content="{Binding ConnectText}" />
+        <Button Classes="PrimaryCta CompactConnectionAction" Command="{Binding ConnectCommand}" Content="{Binding ConnectText}" />
     </StackPanel>
 </UserControl>

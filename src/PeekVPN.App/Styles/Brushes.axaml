@@ -1,48 +1,89 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="Brush.Background.App" Color="{StaticResource Color.Background.App}"/>
-    <SolidColorBrush x:Key="Brush.Background.Surface" Color="{StaticResource Color.Background.Surface}"/>
-    <SolidColorBrush x:Key="Brush.Background.Card" Color="{StaticResource Color.Background.Card}"/>
-    <SolidColorBrush x:Key="Brush.Background.Sidebar" Color="{StaticResource Color.Background.Sidebar}"/>
-    <SolidColorBrush x:Key="Brush.Background.NavActive" Color="{StaticResource Color.Background.NavActive}"/>
-    <SolidColorBrush x:Key="Brush.Background.Search" Color="{StaticResource Color.Background.Search}"/>
-    <SolidColorBrush x:Key="Brush.Background.Upsell" Color="{StaticResource Color.Background.Upsell}"/>
-    <SolidColorBrush x:Key="Brush.Background.ButtonDark" Color="{StaticResource Color.Background.ButtonDark}"/>
-    <SolidColorBrush x:Key="Brush.Background.IconMuted" Color="{StaticResource Color.Background.IconMuted}"/>
-
-    <SolidColorBrush x:Key="Brush.Text.Primary" Color="{StaticResource Color.Text.Primary}"/>
-    <SolidColorBrush x:Key="Brush.Text.Secondary" Color="{StaticResource Color.Text.Secondary}"/>
-    <SolidColorBrush x:Key="Brush.Text.Muted" Color="{StaticResource Color.Text.Muted}"/>
-    <SolidColorBrush x:Key="Brush.Text.OnAccent" Color="{StaticResource Color.Text.OnAccent}"/>
-    <SolidColorBrush x:Key="Brush.Text.OnDark" Color="{StaticResource Color.Text.OnDark}"/>
-    <SolidColorBrush x:Key="Brush.Text.Danger" Color="{StaticResource Color.Text.Danger}"/>
-    <SolidColorBrush x:Key="Brush.Text.Link" Color="{StaticResource Color.Text.Link}"/>
-
-    <SolidColorBrush x:Key="Brush.Accent.Primary" Color="{StaticResource Color.Accent.Primary}"/>
-    <SolidColorBrush x:Key="Brush.Accent.PrimaryHover" Color="{StaticResource Color.Accent.PrimaryHover}"/>
-    <SolidColorBrush x:Key="Brush.Brand.Shield" Color="{StaticResource Color.Brand.Shield}"/>
-
-    <SolidColorBrush x:Key="Brush.Status.Danger" Color="{StaticResource Color.Status.Danger}"/>
-    <SolidColorBrush x:Key="Brush.Status.Success" Color="{StaticResource Color.Status.Success}"/>
-    <SolidColorBrush x:Key="Brush.Status.Warning" Color="{StaticResource Color.Status.Warning}"/>
-    <SolidColorBrush x:Key="Brush.Status.Neutral" Color="{StaticResource Color.Status.Neutral}"/>
-    <SolidColorBrush x:Key="Brush.Status.ActiveBadge" Color="{StaticResource Color.Status.ActiveBadge}"/>
-    <SolidColorBrush x:Key="Brush.Status.ActiveBadgeText" Color="{StaticResource Color.Status.ActiveBadgeText}"/>
-    <SolidColorBrush x:Key="Brush.Status.LiteBadge" Color="{StaticResource Color.Status.LiteBadge}"/>
-
-    <SolidColorBrush x:Key="Brush.Border.Subtle" Color="{StaticResource Color.Border.Subtle}"/>
-    <SolidColorBrush x:Key="Brush.Border.Card" Color="{StaticResource Color.Border.Card}"/>
-
-    <SolidColorBrush x:Key="Brush.Server.Connected" Color="{StaticResource Color.Server.Connected}"/>
-    <SolidColorBrush x:Key="Brush.Server.ConnectedHover" Color="{StaticResource Color.Server.ConnectedHover}"/>
-    <SolidColorBrush x:Key="Brush.Server.Connecting" Color="{StaticResource Color.Server.Connecting}"/>
-    <SolidColorBrush x:Key="Brush.Server.ConnectingHover" Color="{StaticResource Color.Server.ConnectingHover}"/>
-    <SolidColorBrush x:Key="Brush.Server.Paused" Color="{StaticResource Color.Server.Paused}"/>
-    <SolidColorBrush x:Key="Brush.Server.PausedHover" Color="{StaticResource Color.Server.PausedHover}"/>
-    <SolidColorBrush x:Key="Brush.Server.BorderConnected" Color="{StaticResource Color.Server.BorderConnected}"/>
-    <SolidColorBrush x:Key="Brush.Server.BorderConnecting" Color="{StaticResource Color.Server.BorderConnecting}"/>
-    <SolidColorBrush x:Key="Brush.Server.BorderPaused" Color="{StaticResource Color.Server.BorderPaused}"/>
-    <SolidColorBrush x:Key="Brush.Map.Land" Color="{StaticResource Color.Map.Land}"/>
-    <SolidColorBrush x:Key="Brush.Map.Water" Color="{StaticResource Color.Map.Water}"/>
-    <SolidColorBrush x:Key="Brush.Map.Marker" Color="{StaticResource Color.Map.Marker}"/>
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush x:Key="Brush.Background.App" Color="#F3EDE4"/>
+            <SolidColorBrush x:Key="Brush.Background.Surface" Color="#FFF9F2"/>
+            <SolidColorBrush x:Key="Brush.Background.Card" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="Brush.Background.Sidebar" Color="#F7F1E8"/>
+            <SolidColorBrush x:Key="Brush.Background.NavActive" Color="#E8DCCB"/>
+            <SolidColorBrush x:Key="Brush.Background.Search" Color="#EFE6DA"/>
+            <SolidColorBrush x:Key="Brush.Background.Upsell" Color="#EFE6DA"/>
+            <SolidColorBrush x:Key="Brush.Background.ButtonDark" Color="#3A2A1E"/>
+            <SolidColorBrush x:Key="Brush.Background.IconMuted" Color="#E8DFD3"/>
+            <SolidColorBrush x:Key="Brush.Text.Primary" Color="#2C2118"/>
+            <SolidColorBrush x:Key="Brush.Text.Secondary" Color="#7A6A58"/>
+            <SolidColorBrush x:Key="Brush.Text.Muted" Color="#A09080"/>
+            <SolidColorBrush x:Key="Brush.Text.OnAccent" Color="#2C2118"/>
+            <SolidColorBrush x:Key="Brush.Text.OnDark" Color="#FFF8EF"/>
+            <SolidColorBrush x:Key="Brush.Text.Danger" Color="#C45C4A"/>
+            <SolidColorBrush x:Key="Brush.Text.Link" Color="#6B5A48"/>
+            <SolidColorBrush x:Key="Brush.Accent.Primary" Color="#E8C15A"/>
+            <SolidColorBrush x:Key="Brush.Accent.PrimaryHover" Color="#F0CF72"/>
+            <SolidColorBrush x:Key="Brush.Brand.Shield" Color="#C9A227"/>
+            <SolidColorBrush x:Key="Brush.Status.Danger" Color="#D64545"/>
+            <SolidColorBrush x:Key="Brush.Status.Success" Color="#3FA66A"/>
+            <SolidColorBrush x:Key="Brush.Status.Warning" Color="#D4A017"/>
+            <SolidColorBrush x:Key="Brush.Status.Neutral" Color="#A09080"/>
+            <SolidColorBrush x:Key="Brush.Status.ActiveBadge" Color="#E7F6EC"/>
+            <SolidColorBrush x:Key="Brush.Status.ActiveBadgeText" Color="#2F8F57"/>
+            <SolidColorBrush x:Key="Brush.Status.LiteBadge" Color="#EEE4D6"/>
+            <SolidColorBrush x:Key="Brush.Border.Subtle" Color="#E4D8C8"/>
+            <SolidColorBrush x:Key="Brush.Border.Card" Color="#EDE3D6"/>
+            <SolidColorBrush x:Key="Brush.Server.Connected" Color="#D8F0E2"/>
+            <SolidColorBrush x:Key="Brush.Server.ConnectedHover" Color="#E8F7EE"/>
+            <SolidColorBrush x:Key="Brush.Server.Connecting" Color="#E4E0DA"/>
+            <SolidColorBrush x:Key="Brush.Server.ConnectingHover" Color="#EEEBE6"/>
+            <SolidColorBrush x:Key="Brush.Server.Paused" Color="#F5E6B8"/>
+            <SolidColorBrush x:Key="Brush.Server.PausedHover" Color="#FAF0D2"/>
+            <SolidColorBrush x:Key="Brush.Server.BorderConnected" Color="#3FA66A"/>
+            <SolidColorBrush x:Key="Brush.Server.BorderConnecting" Color="#8A8074"/>
+            <SolidColorBrush x:Key="Brush.Server.BorderPaused" Color="#D4A017"/>
+            <SolidColorBrush x:Key="Brush.Map.Land" Color="#E0D4C4"/>
+            <SolidColorBrush x:Key="Brush.Map.Water" Color="#F7F1E8"/>
+            <SolidColorBrush x:Key="Brush.Map.Marker" Color="#C9A227"/>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush x:Key="Brush.Background.App" Color="#181412"/>
+            <SolidColorBrush x:Key="Brush.Background.Surface" Color="#211B18"/>
+            <SolidColorBrush x:Key="Brush.Background.Card" Color="#2B2420"/>
+            <SolidColorBrush x:Key="Brush.Background.Sidebar" Color="#1E1916"/>
+            <SolidColorBrush x:Key="Brush.Background.NavActive" Color="#40352E"/>
+            <SolidColorBrush x:Key="Brush.Background.Search" Color="#352C27"/>
+            <SolidColorBrush x:Key="Brush.Background.Upsell" Color="#352C27"/>
+            <SolidColorBrush x:Key="Brush.Background.ButtonDark" Color="#E9DED2"/>
+            <SolidColorBrush x:Key="Brush.Background.IconMuted" Color="#403630"/>
+            <SolidColorBrush x:Key="Brush.Text.Primary" Color="#F7EEE5"/>
+            <SolidColorBrush x:Key="Brush.Text.Secondary" Color="#CDBFB2"/>
+            <SolidColorBrush x:Key="Brush.Text.Muted" Color="#9F9084"/>
+            <SolidColorBrush x:Key="Brush.Text.OnAccent" Color="#2C2118"/>
+            <SolidColorBrush x:Key="Brush.Text.OnDark" Color="#2C2118"/>
+            <SolidColorBrush x:Key="Brush.Text.Danger" Color="#FF9A89"/>
+            <SolidColorBrush x:Key="Brush.Text.Link" Color="#E7C986"/>
+            <SolidColorBrush x:Key="Brush.Accent.Primary" Color="#E8C15A"/>
+            <SolidColorBrush x:Key="Brush.Accent.PrimaryHover" Color="#F6D67F"/>
+            <SolidColorBrush x:Key="Brush.Brand.Shield" Color="#E8C15A"/>
+            <SolidColorBrush x:Key="Brush.Status.Danger" Color="#FF7B72"/>
+            <SolidColorBrush x:Key="Brush.Status.Success" Color="#72C995"/>
+            <SolidColorBrush x:Key="Brush.Status.Warning" Color="#F0C45E"/>
+            <SolidColorBrush x:Key="Brush.Status.Neutral" Color="#9F9084"/>
+            <SolidColorBrush x:Key="Brush.Status.ActiveBadge" Color="#1D412D"/>
+            <SolidColorBrush x:Key="Brush.Status.ActiveBadgeText" Color="#8CE2AD"/>
+            <SolidColorBrush x:Key="Brush.Status.LiteBadge" Color="#4A3A2A"/>
+            <SolidColorBrush x:Key="Brush.Border.Subtle" Color="#4A3D35"/>
+            <SolidColorBrush x:Key="Brush.Border.Card" Color="#493C35"/>
+            <SolidColorBrush x:Key="Brush.Server.Connected" Color="#1F5034"/>
+            <SolidColorBrush x:Key="Brush.Server.ConnectedHover" Color="#286140"/>
+            <SolidColorBrush x:Key="Brush.Server.Connecting" Color="#49413B"/>
+            <SolidColorBrush x:Key="Brush.Server.ConnectingHover" Color="#5C534C"/>
+            <SolidColorBrush x:Key="Brush.Server.Paused" Color="#5A4720"/>
+            <SolidColorBrush x:Key="Brush.Server.PausedHover" Color="#705A29"/>
+            <SolidColorBrush x:Key="Brush.Server.BorderConnected" Color="#72C995"/>
+            <SolidColorBrush x:Key="Brush.Server.BorderConnecting" Color="#C4B9AF"/>
+            <SolidColorBrush x:Key="Brush.Server.BorderPaused" Color="#F0C45E"/>
+            <SolidColorBrush x:Key="Brush.Map.Land" Color="#4D4139"/>
+            <SolidColorBrush x:Key="Brush.Map.Water" Color="#211B18"/>
+            <SolidColorBrush x:Key="Brush.Map.Marker" Color="#E8C15A"/>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

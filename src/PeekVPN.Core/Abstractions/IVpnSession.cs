@@ -1,4 +1,5 @@
 using PeekVPN.Core.State;
+using PeekVPN.Core.Vpn;
 
 namespace PeekVPN.Core.Abstractions;
 
@@ -8,7 +9,7 @@ public interface IVpnSession
 
     event EventHandler<VpnSessionSnapshot>? StateChanged;
 
-    Task ConnectAsync(string serverId, CancellationToken cancellationToken = default);
+    Task ConnectAsync(VpnConnectionRequest request, CancellationToken cancellationToken = default);
 
     Task DisconnectAsync(CancellationToken cancellationToken = default);
 

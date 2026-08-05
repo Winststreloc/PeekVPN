@@ -1,0 +1,61 @@
+<UserControl
+    x:Class="PeekVPN.App.Views.ProfilePageView"
+    x:DataType="vm:ProfilePageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel MaxWidth="980" Spacing="18">
+            <StackPanel Spacing="4">
+                <TextBlock FontSize="28" FontWeight="Bold" Text="{Binding Title}" />
+                <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding Subtitle}" />
+            </StackPanel>
+
+            <Border Classes="Card" Padding="26">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="20">
+                    <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="36" Height="72" Width="72">
+                        <TextBlock FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Text="AM" VerticalAlignment="Center" />
+                    </Border>
+                    <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                        <TextBlock FontSize="22" FontWeight="SemiBold" Text="{Binding DisplayName}" />
+                        <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding EmailAddress}" />
+                    </StackPanel>
+                    <Button Classes="OutlineCta" Content="{Binding EditProfile}" Grid.Column="2" VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="18">
+                <Border Classes="Card">
+                    <StackPanel Spacing="18">
+                        <TextBlock FontSize="18" FontWeight="SemiBold" Text="{Binding AccountTitle}" />
+                        <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding AccountSubtitle}" TextWrapping="Wrap" />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="4"><TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding MemberSinceLabel}" /><TextBlock FontSize="16" FontWeight="SemiBold" Text="{Binding MemberSinceValue}" /></StackPanel>
+                            <StackPanel Grid.Column="1" Spacing="4"><TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding DevicesLabel}" /><TextBlock FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Right" Text="{Binding DevicesValue}" /></StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+                <Border Classes="Card" Grid.Column="1">
+                    <StackPanel Spacing="18">
+                        <TextBlock FontSize="18" FontWeight="SemiBold" Text="{Binding ProtectionTitle}" />
+                        <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding ProtectionSubtitle}" TextWrapping="Wrap" />
+                        <Border Background="{DynamicResource Brush.Status.ActiveBadge}" CornerRadius="12" Padding="12,8">
+                            <TextBlock Foreground="{DynamicResource Brush.Status.ActiveBadgeText}" FontWeight="SemiBold" Text="{Binding ProtectionValue}" />
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Border Background="{DynamicResource Brush.Background.ButtonDark}" CornerRadius="22" Padding="26">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="20">
+                    <StackPanel Spacing="5">
+                        <TextBlock FontSize="18" FontWeight="SemiBold" Foreground="{DynamicResource Brush.Text.OnDark}" Text="{Binding PlanValue}" />
+                        <TextBlock Foreground="{DynamicResource Brush.Text.OnDark}" Opacity="0.8" Text="{Binding RenewsLabel}" />
+                        <TextBlock Foreground="{DynamicResource Brush.Text.OnDark}" Text="{Binding RenewsValue}" />
+                    </StackPanel>
+                    <Button Classes="PrimaryCta" Content="{Binding ManagePlan}" Grid.Column="1" VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

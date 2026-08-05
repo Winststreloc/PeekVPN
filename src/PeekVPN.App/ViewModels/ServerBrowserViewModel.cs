@@ -16,14 +16,19 @@ public partial class ServerBrowserViewModel : SessionObserverViewModel
     private const int MaxRecentServers = 3;
 
     private readonly IServerLookup _serverLookup;
+    private readonly IVpnConnectionRequestFactory _requestFactory;
     private readonly List<ServerItemViewModel> _allServers = [];
     private readonly List<string> _recentServerIds = [];
     private VpnConnectionState _previousState;
 
-    public ServerBrowserViewModel(IVpnSession session, IServerLookup serverLookup)
+    public ServerBrowserViewModel(
+        IVpnSession session,
+        IServerLookup serverLookup,
+        IVpnConnectionRequestFactory requestFactory)
         : base(session)
     {
         _serverLookup = serverLookup;
+        _requestFactory = requestFactory;
         _previousState = session.Snapshot.State;
         _ = LoadServersAsync();
     }
@@ -35,6 +40,8 @@ public partial class ServerBrowserViewModel : SessionObserverViewModel
     public string RecentConnectionsTitle => Strings.RecentConnectionsTitle;
 
     public string AllServersTitle => Strings.AllServersTitle;
+
+    public string SearchServersWatermark => Strings.SearchServersWatermark;
 
     [ObservableProperty]
     public partial string SearchQuery { get; set; } = string.Empty;
@@ -73,7 +80,8 @@ public partial class ServerBrowserViewModel : SessionObserverViewModel
 
         if (Session.Snapshot.State is VpnConnectionState.Disconnected)
         {
-            await Session.ConnectAsync(server.Id);
+            var request = await _requestFactory.CreateAsync(server.Id).ConfigureAwait(false);
+            await Session.ConnectAsync(request).ConfigureAwait(false);
         }
     }
 
@@ -159,11 +167,7 @@ public partial class ServerBrowserViewModel : SessionObserverViewModel
         IEnumerable<ServerItemViewModel> filtered = _allServers;
         if (!string.IsNullOrWhiteSpace(SearchQuery))
         {
-            var query = SearchQuery.Trim();
-            filtered = _allServers.Where(server =>
-                server.Country.Contains(query, StringComparison.OrdinalIgnoreCase)
-                || server.CityLabel.Contains(query, StringComparison.OrdinalIgnoreCase)
-                || server.CountryCode.Contains(query, StringComparison.OrdinalIgnoreCase));
+            filtered = _allServers.Where(server => MatchesSearch(server, SearchQuery));
         }
 
         RecentServers.Clear();
@@ -183,6 +187,15 @@ public partial class ServerBrowserViewModel : SessionObserverViewModel
         {
             FilteredServers.Add(server);
         }
+    }
+
+    internal static bool MatchesSearch(ServerItemViewModel server, string query)
+    {
+        var trimmedQuery = query.Trim();
+        return server.Country.Contains(trimmedQuery, StringComparison.OrdinalIgnoreCase)
+            || server.City.Contains(trimmedQuery, StringComparison.OrdinalIgnoreCase)
+            || server.CityLabel.Contains(trimmedQuery, StringComparison.OrdinalIgnoreCase)
+            || server.CountryCode.Contains(trimmedQuery, StringComparison.OrdinalIgnoreCase);
     }
 
     private void SyncServerConnectionStates(VpnSessionSnapshot snapshot)

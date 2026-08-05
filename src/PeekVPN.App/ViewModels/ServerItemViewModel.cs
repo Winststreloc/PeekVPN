@@ -27,7 +27,9 @@ public partial class ServerItemViewModel : ViewModelBase
                 server.CountryCode,
                 server.LatencyMs,
                 server.DisplayName,
-                CountryFlagAssets.GetUri(server.CountryCode)),
+                CountryFlagAssets.GetUri(server.CountryCode),
+                server.Latitude,
+                server.Longitude),
             connectServerCommand)
     {
     }

@@ -68,7 +68,9 @@ public sealed class ServerRegistry(IServerCatalog serverCatalog) : IServerLookup
                 server.CountryCode,
                 server.LatencyMs,
                 server.DisplayName,
-                CountryFlagAssets.GetUri(server.CountryCode)))
+                CountryFlagAssets.GetUri(server.CountryCode),
+                server.Latitude,
+                server.Longitude))
             .ToArray();
 
         _serversById = metadata.ToDictionary(server => server.Id, StringComparer.Ordinal);

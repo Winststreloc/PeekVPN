@@ -6,4 +6,6 @@ public sealed record VpnServerDto(
     string Country,
     string CountryCode,
     int LatencyMs,
-    string DisplayName);
+    string DisplayName,
+    double Latitude,
+    double Longitude);

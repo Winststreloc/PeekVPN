@@ -5,5 +5,6 @@
     <Project Path="src/PeekVPN.Core.Tests/PeekVPN.Core.Tests.csproj" />
     <Project Path="src/PeekVPN.Infrastructure/PeekVPN.Infrastructure.csproj" />
     <Project Path="src/PeekVPN.App/PeekVPN.App.csproj" />
+    <Project Path="src/PeekVPN.Service/PeekVPN.Service.csproj" />
   </Folder>
 </Solution>

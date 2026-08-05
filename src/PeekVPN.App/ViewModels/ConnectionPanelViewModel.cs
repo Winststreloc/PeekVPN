@@ -11,6 +11,7 @@ namespace PeekVPN.App.ViewModels;
 public sealed partial class ConnectionPanelViewModel : SessionObserverViewModel
 {
     private IServerLookup? _serverLookup;
+    private readonly IVpnConnectionRequestFactory _requestFactory;
     private int _presentationVersion;
 
     [ObservableProperty]
@@ -19,10 +20,14 @@ public sealed partial class ConnectionPanelViewModel : SessionObserverViewModel
     [ObservableProperty]
     private string? _selectedServerId;
 
-    public ConnectionPanelViewModel(IVpnSession session, IServerLookup serverLookup)
+    public ConnectionPanelViewModel(
+        IVpnSession session,
+        IServerLookup serverLookup,
+        IVpnConnectionRequestFactory requestFactory)
         : base(session)
     {
         _serverLookup = serverLookup;
+        _requestFactory = requestFactory;
         _ = RefreshPresenterAsync(session.Snapshot);
     }
 
@@ -75,7 +80,7 @@ public sealed partial class ConnectionPanelViewModel : SessionObserverViewModel
         ServerDisplayMetadata? server) =>
         snapshot.State switch
         {
-            VpnConnectionState.Disconnected => new DisconnectedStateViewModel(Session, snapshot, server),
+            VpnConnectionState.Disconnected => new DisconnectedStateViewModel(Session, _requestFactory, snapshot, server),
             VpnConnectionState.Connecting => new ConnectingStateViewModel(Session, snapshot, server),
             VpnConnectionState.Connected => new ConnectedStateViewModel(Session, snapshot, server),
             VpnConnectionState.Paused => new PausedStateViewModel(Session, snapshot, server),

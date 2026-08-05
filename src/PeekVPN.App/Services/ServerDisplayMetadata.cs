@@ -10,4 +10,6 @@ public sealed record ServerDisplayMetadata(
     string CountryCode,
     int LatencyMs,
     string DisplayName,
-    Uri? FlagUri);
+    Uri? FlagUri,
+    double Latitude,
+    double Longitude);

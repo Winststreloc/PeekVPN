@@ -38,13 +38,11 @@
                 CornerRadius="12"
                 Grid.Row="1"
                 MinHeight="120">
-                <ctrl:SvgImage
-                    HorizontalAlignment="Stretch"
-                    Margin="8"
-                    RasterWidth="1000"
-                    SourceUri="avares://PeekVPN/Assets/world.svg"
-                    Stretch="Uniform"
-                    VerticalAlignment="Stretch" />
+                <ctrl:InteractiveMapControl
+                    FocusTarget="{Binding FocusTarget}"
+                    MarkerCommand="{Binding ActivateMarkerCommand}"
+                    Markers="{Binding Markers}"
+                    Margin="8" />
             </Border>
         </Grid>
     </Border>

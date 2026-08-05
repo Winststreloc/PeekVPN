@@ -19,6 +19,7 @@
 
   <data name="NavMap" xml:space="preserve"><value>Map</value></data>
   <data name="NavStatistic" xml:space="preserve"><value>Statistic</value></data>
+  <data name="NavStatistics" xml:space="preserve"><value>Statistics</value></data>
   <data name="NavProfile" xml:space="preserve"><value>Profile</value></data>
   <data name="NavSettings" xml:space="preserve"><value>Settings</value></data>
   <data name="NavSupport" xml:space="preserve"><value>Support</value></data>
@@ -83,4 +84,105 @@
   <data name="LatencyFormat" xml:space="preserve"><value>{0}ms</value></data>
   <data name="LoadingServers" xml:space="preserve"><value>Loading servers…</value></data>
   <data name="ErrorLoadServers" xml:space="preserve"><value>Could not load servers.</value></data>
+
+  <data name="StatisticsPageTitle" xml:space="preserve"><value>Statistics</value></data>
+  <data name="StatisticsPageSubtitle" xml:space="preserve"><value>A clear view of your recent protection.</value></data>
+  <data name="StatisticsProtectedTime" xml:space="preserve"><value>Protected time</value></data>
+  <data name="StatisticsProtectedTimeValue" xml:space="preserve"><value>42h 18m</value></data>
+  <data name="StatisticsDataProtected" xml:space="preserve"><value>Data protected</value></data>
+  <data name="StatisticsDataProtectedValue" xml:space="preserve"><value>18.6 GB</value></data>
+  <data name="StatisticsAverageSpeed" xml:space="preserve"><value>Average speed</value></data>
+  <data name="StatisticsAverageSpeedValue" xml:space="preserve"><value>84 Mbps</value></data>
+  <data name="StatisticsConnections" xml:space="preserve"><value>Connections</value></data>
+  <data name="StatisticsConnectionsValue" xml:space="preserve"><value>27</value></data>
+  <data name="StatisticsActivityTitle" xml:space="preserve"><value>Connection activity</value></data>
+  <data name="StatisticsActivitySubtitle" xml:space="preserve"><value>Sample data from the last seven days</value></data>
+  <data name="StatisticsDownload" xml:space="preserve"><value>Download</value></data>
+  <data name="StatisticsUpload" xml:space="preserve"><value>Upload</value></data>
+  <data name="StatisticsLocationsTitle" xml:space="preserve"><value>Most used locations</value></data>
+  <data name="StatisticsLocationsSubtitle" xml:space="preserve"><value>Based on your recent connections</value></data>
+  <data name="StatisticsGermany" xml:space="preserve"><value>Germany</value></data>
+  <data name="StatisticsNetherlands" xml:space="preserve"><value>Netherlands</value></data>
+  <data name="StatisticsUnitedStates" xml:space="preserve"><value>United States</value></data>
+  <data name="StatisticsToday" xml:space="preserve"><value>Today</value></data>
+  <data name="StatisticsLastSevenDays" xml:space="preserve"><value>Last 7 days</value></data>
+
+  <data name="ProfilePageTitle" xml:space="preserve"><value>Profile</value></data>
+  <data name="ProfilePageSubtitle" xml:space="preserve"><value>Manage your PeekVPN membership and account.</value></data>
+  <data name="ProfileDisplayName" xml:space="preserve"><value>Alex Morgan</value></data>
+  <data name="ProfileEmailAddress" xml:space="preserve"><value>alex@example.com</value></data>
+  <data name="ProfilePlanLabel" xml:space="preserve"><value>Current plan</value></data>
+  <data name="ProfilePlanValue" xml:space="preserve"><value>Premium</value></data>
+  <data name="ProfileRenewsLabel" xml:space="preserve"><value>Renews</value></data>
+  <data name="ProfileRenewsValue" xml:space="preserve"><value>September 24, 2026</value></data>
+  <data name="ProfileAccountTitle" xml:space="preserve"><value>Account overview</value></data>
+  <data name="ProfileAccountSubtitle" xml:space="preserve"><value>Sample account details are shown until account services are available.</value></data>
+  <data name="ProfileMemberSinceLabel" xml:space="preserve"><value>Member since</value></data>
+  <data name="ProfileMemberSinceValue" xml:space="preserve"><value>August 2025</value></data>
+  <data name="ProfileDevicesLabel" xml:space="preserve"><value>Protected devices</value></data>
+  <data name="ProfileDevicesValue" xml:space="preserve"><value>3 of 10</value></data>
+  <data name="ProfileProtectionTitle" xml:space="preserve"><value>Protection status</value></data>
+  <data name="ProfileProtectionSubtitle" xml:space="preserve"><value>Your account is ready to protect every device.</value></data>
+  <data name="ProfileProtectionValue" xml:space="preserve"><value>Premium protection</value></data>
+  <data name="ProfileManagePlan" xml:space="preserve"><value>Manage plan</value></data>
+  <data name="ProfileEditProfile" xml:space="preserve"><value>Edit profile</value></data>
+
+  <data name="SettingsVpnConnectionSection" xml:space="preserve"><value>VPN Connection</value></data>
+  <data name="SettingsSecurityAndPrivacySection" xml:space="preserve"><value>Security &amp; Privacy</value></data>
+  <data name="SettingsGeneralSection" xml:space="preserve"><value>General</value></data>
+  <data name="SettingsAutoConnectTitle" xml:space="preserve"><value>Auto-connect</value></data>
+  <data name="SettingsAutoConnectDescription" xml:space="preserve"><value>Connect automatically when the app opens.</value></data>
+  <data name="SettingsAutoConnectTargetTitle" xml:space="preserve"><value>Connect using</value></data>
+  <data name="SettingsAutoConnectTargetDescription" xml:space="preserve"><value>Choose the fastest location or select another available server.</value></data>
+  <data name="SettingsFastestServer" xml:space="preserve"><value>Fastest server</value></data>
+  <data name="SettingsAutoConnectServerTitle" xml:space="preserve"><value>Or choose a server</value></data>
+  <data name="SettingsAutoConnectServerDescription" xml:space="preserve"><value>Select one server to use instead of the fastest available location.</value></data>
+  <data name="SettingsServerPlaceholder" xml:space="preserve"><value>Choose a server</value></data>
+  <data name="SettingsServerAmsterdam" xml:space="preserve"><value>Amsterdam, Netherlands</value></data>
+  <data name="SettingsServerNewYork" xml:space="preserve"><value>New York, United States</value></data>
+  <data name="SettingsServerSingapore" xml:space="preserve"><value>Singapore</value></data>
+  <data name="SettingsSplitTunnelingTitle" xml:space="preserve"><value>Split tunneling</value></data>
+  <data name="SettingsSplitTunnelingDescription" xml:space="preserve"><value>Control which domains and applications use the VPN connection.</value></data>
+  <data name="SettingsSplitTunnelingDomainsTitle" xml:space="preserve"><value>Split tunneling for domains</value></data>
+  <data name="SettingsSplitTunnelingDomainsDescription" xml:space="preserve"><value>Exclude selected domains from the VPN connection.</value></data>
+  <data name="SettingsSplitTunnelingApplicationsTitle" xml:space="preserve"><value>Split tunneling for applications</value></data>
+  <data name="SettingsSplitTunnelingApplicationsDescription" xml:space="preserve"><value>Exclude selected applications from the VPN connection.</value></data>
+  <data name="SettingsSplitTunnelingAddDomainWatermark" xml:space="preserve"><value>example.com</value></data>
+  <data name="SettingsSplitTunnelingAddApplicationWatermark" xml:space="preserve"><value>Application name or path</value></data>
+  <data name="SettingsSplitTunnelingAddButton" xml:space="preserve"><value>Add</value></data>
+  <data name="SettingsSplitTunnelingDomainsEmpty" xml:space="preserve"><value>No domains have been added yet.</value></data>
+  <data name="SettingsSplitTunnelingApplicationsEmpty" xml:space="preserve"><value>No applications have been added yet.</value></data>
+  <data name="SettingsKillSwitchTitle" xml:space="preserve"><value>Kill switch</value></data>
+  <data name="SettingsKillSwitchDescription" xml:space="preserve"><value>Block internet traffic when the VPN disconnects unexpectedly.</value></data>
+  <data name="SettingsKillSwitchModeTitle" xml:space="preserve"><value>Kill switch mode</value></data>
+  <data name="SettingsKillSwitchModeDescription" xml:space="preserve"><value>Choose how strictly traffic is blocked when VPN protection stops.</value></data>
+  <data name="SettingsKillSwitchSoftMode" xml:space="preserve"><value>Soft Kill Switch</value></data>
+  <data name="SettingsKillSwitchHardMode" xml:space="preserve"><value>Hard Kill Switch</value></data>
+  <data name="SettingsVpnProtocolTitle" xml:space="preserve"><value>VPN protocol</value></data>
+  <data name="SettingsVpnProtocolDescription" xml:space="preserve"><value>Choose the connection protocol used by the app.</value></data>
+  <data name="SettingsProtocolRecommended" xml:space="preserve"><value>Recommended (WireGuard)</value></data>
+  <data name="SettingsProtocolOpenVpn" xml:space="preserve"><value>OpenVPN</value></data>
+  <data name="SettingsProtocolIkev2" xml:space="preserve"><value>IKEv2</value></data>
+  <data name="SettingsCustomDnsTitle" xml:space="preserve"><value>Custom DNS</value></data>
+  <data name="SettingsCustomDnsDescription" xml:space="preserve"><value>Use custom DNS settings for VPN connections.</value></data>
+  <data name="SettingsAutoStartupTitle" xml:space="preserve"><value>Auto-startup</value></data>
+  <data name="SettingsAutoStartupDescription" xml:space="preserve"><value>Launch PeekVPN when you sign in to this device.</value></data>
+  <data name="SettingsStayHiddenTitle" xml:space="preserve"><value>Stay hidden</value></data>
+  <data name="SettingsStayHiddenDescription" xml:space="preserve"><value>Keep the window hidden after launching the app.</value></data>
+  <data name="SettingsAutoUpdatesTitle" xml:space="preserve"><value>Auto-updates</value></data>
+  <data name="SettingsAutoUpdatesDescription" xml:space="preserve"><value>Download and install available app updates automatically.</value></data>
+  <data name="SettingsAllowBackgroundProcessesTitle" xml:space="preserve"><value>Allow background processes</value></data>
+  <data name="SettingsAllowBackgroundProcessesDescription" xml:space="preserve"><value>Keep protection services available when the window is closed.</value></data>
+  <data name="SettingsAppearanceTitle" xml:space="preserve"><value>Appearance</value></data>
+  <data name="SettingsAppearanceDescription" xml:space="preserve"><value>Choose how PeekVPN looks on this device.</value></data>
+  <data name="SettingsAppearanceSystem" xml:space="preserve"><value>Use system setting</value></data>
+  <data name="SettingsAppearanceLight" xml:space="preserve"><value>Light</value></data>
+  <data name="SettingsAppearanceDark" xml:space="preserve"><value>Dark</value></data>
+  <data name="SettingsShowNotificationsTitle" xml:space="preserve"><value>Show notifications</value></data>
+  <data name="SettingsShowNotificationsDescription" xml:space="preserve"><value>Notify you about connection and protection events.</value></data>
+  <data name="SettingsSendAppLogsTitle" xml:space="preserve"><value>Send app logs</value></data>
+  <data name="SettingsSendAppLogsDescription" xml:space="preserve"><value>Share diagnostic logs to help improve the app.</value></data>
+  <data name="SettingsResetSettingsTitle" xml:space="preserve"><value>Reset all app settings to defaults</value></data>
+  <data name="SettingsResetSettingsDescription" xml:space="preserve"><value>Restore the settings on this page to their original values.</value></data>
+  <data name="SettingsResetSettingsButton" xml:space="preserve"><value>Reset settings</value></data>
 </root>

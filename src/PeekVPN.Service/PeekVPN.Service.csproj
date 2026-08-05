@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>PeekVPN.Service</AssemblyName>
+    <RootNamespace>PeekVPN.Service</RootNamespace>
+    <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+    <AllowMissingPrunePackageData>true</AllowMissingPrunePackageData>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Grpc.AspNetCore.Server" Version="2.76.0" />
+    <PackageReference Include="Serilog" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PeekVPN.Contracts\PeekVPN.Contracts.csproj" />
+    <ProjectReference Include="..\PeekVPN.Core\PeekVPN.Core.csproj" />
+    <ProjectReference Include="..\PeekVPN.Infrastructure\PeekVPN.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

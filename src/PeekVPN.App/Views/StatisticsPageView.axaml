@@ -1,0 +1,79 @@
+<UserControl
+    x:Class="PeekVPN.App.Views.StatisticsPageView"
+    x:DataType="vm:StatisticsPageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:vm="using:PeekVPN.App.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel MaxWidth="1120" Spacing="18">
+            <StackPanel Spacing="4">
+                <TextBlock FontSize="28" FontWeight="Bold" Text="{Binding Title}" />
+                <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding Subtitle}" />
+            </StackPanel>
+
+            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="14">
+                <Border Classes="Card">
+                    <StackPanel Spacing="8">
+                        <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding ProtectedTimeLabel}" />
+                        <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding ProtectedTimeValue}" />
+                    </StackPanel>
+                </Border>
+                <Border Classes="Card" Grid.Column="1">
+                    <StackPanel Spacing="8">
+                        <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding DataProtectedLabel}" />
+                        <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding DataProtectedValue}" />
+                    </StackPanel>
+                </Border>
+                <Border Classes="Card" Grid.Column="2">
+                    <StackPanel Spacing="8">
+                        <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding AverageSpeedLabel}" />
+                        <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding AverageSpeedValue}" />
+                    </StackPanel>
+                </Border>
+                <Border Classes="Card" Grid.Column="3">
+                    <StackPanel Spacing="8">
+                        <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding ConnectionsLabel}" />
+                        <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding ConnectionsValue}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,280" ColumnSpacing="18">
+                <Border Classes="Card">
+                    <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="10">
+                        <TextBlock FontSize="18" FontWeight="SemiBold" Text="{Binding ActivityTitle}" />
+                        <TextBlock Grid.Row="1" Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding ActivitySubtitle}" />
+                        <Grid Grid.Row="2" Height="240" Margin="0,14,0,6">
+                            <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="12" VerticalAlignment="Bottom">
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="0" Height="104" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="1" Height="156" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="2" Height="86" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="3" Height="188" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="4" Height="135" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="5" Height="211" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="6" Height="165" VerticalAlignment="Bottom" />
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3" ColumnDefinitions="*,Auto" VerticalAlignment="Center">
+                            <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding LastSevenDaysLabel}" />
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="12">
+                                <StackPanel Orientation="Horizontal" Spacing="5"><Ellipse Fill="{DynamicResource Brush.Accent.Primary}" Height="8" Width="8" /><TextBlock Text="{Binding DownloadLabel}" /></StackPanel>
+                                <StackPanel Orientation="Horizontal" Spacing="5"><Ellipse Fill="{DynamicResource Brush.Background.IconMuted}" Height="8" Width="8" /><TextBlock Text="{Binding UploadLabel}" /></StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <Border Classes="Card" Grid.Column="1">
+                    <StackPanel Spacing="12">
+                        <TextBlock FontSize="18" FontWeight="SemiBold" Text="{Binding LocationsTitle}" />
+                        <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding LocationsSubtitle}" TextWrapping="Wrap" />
+                        <Border Classes="StatListItem"><Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10"><TextBlock FontSize="18" Text="🇩🇪" /><TextBlock Grid.Column="1" Text="{Binding GermanyLabel}" VerticalAlignment="Center" /><TextBlock Grid.Column="2" Text="12" VerticalAlignment="Center" /></Grid></Border>
+                        <Border Classes="StatListItem"><Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10"><TextBlock FontSize="18" Text="🇳🇱" /><TextBlock Grid.Column="1" Text="{Binding NetherlandsLabel}" VerticalAlignment="Center" /><TextBlock Grid.Column="2" Text="8" VerticalAlignment="Center" /></Grid></Border>
+                        <Border Classes="StatListItem"><Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10"><TextBlock FontSize="18" Text="🇺🇸" /><TextBlock Grid.Column="1" Text="{Binding UnitedStatesLabel}" VerticalAlignment="Center" /><TextBlock Grid.Column="2" Text="7" VerticalAlignment="Center" /></Grid></Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

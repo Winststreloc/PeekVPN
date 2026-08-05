@@ -86,19 +86,25 @@
     </UserControl.DataTemplates>
 
     <Border Classes="Card" Padding="12">
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*" RowSpacing="4">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" RowSpacing="4">
+            <TextBox
+                Classes="SearchBox"
+                Margin="0,0,0,8"
+                PlaceholderText="{Binding SearchServersWatermark}"
+                Text="{Binding SearchQuery}" />
             <TextBlock
                 FontSize="12"
                 FontWeight="SemiBold"
                 Foreground="{DynamicResource Brush.Text.Secondary}"
+                Grid.Row="1"
                 Text="{Binding RecentConnectionsTitle}" />
             <TextBlock
                 FontSize="11"
                 Foreground="{DynamicResource Brush.Text.Muted}"
-                Grid.Row="1"
+                Grid.Row="2"
                 IsVisible="{Binding StatusMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
                 Text="{Binding StatusMessage}" />
-            <StackPanel Grid.Row="2" Spacing="0">
+            <StackPanel Grid.Row="3" Spacing="0">
                 <TextBlock
                     FontSize="11"
                     Foreground="{DynamicResource Brush.Text.Muted}"
@@ -112,11 +118,11 @@
                 FontSize="12"
                 FontWeight="SemiBold"
                 Foreground="{DynamicResource Brush.Text.Secondary}"
-                Grid.Row="3"
+                Grid.Row="4"
                 Margin="0,8,0,0"
                 Text="{Binding AllServersTitle}" />
             <ScrollViewer
-                Grid.Row="4"
+                Grid.Row="5"
                 HorizontalScrollBarVisibility="Disabled"
                 VerticalScrollBarVisibility="Auto">
                 <ItemsControl ItemsSource="{Binding FilteredServers}" />

@@ -3,6 +3,7 @@ using PeekVPN.App.Localization;
 using PeekVPN.App.Services;
 using PeekVPN.Core.Abstractions;
 using PeekVPN.Core.State;
+using PeekVPN.Core.Vpn;
 
 namespace PeekVPN.App.ViewModels;
 
@@ -36,6 +37,7 @@ public abstract class ConnectionStateViewModelBase(
 
 public sealed partial class DisconnectedStateViewModel(
     IVpnSession session,
+    IVpnConnectionRequestFactory requestFactory,
     VpnSessionSnapshot snapshot,
     ServerDisplayMetadata? server)
     : ConnectionStateViewModelBase(session, snapshot, server)
@@ -53,7 +55,11 @@ public sealed partial class DisconnectedStateViewModel(
     public bool CanConnect => Server is not null;
 
     [RelayCommand(AllowConcurrentExecutions = true, CanExecute = nameof(CanConnect))]
-    private Task ConnectAsync() => Session.ConnectAsync(Server!.Id);
+    private async Task ConnectAsync()
+    {
+        var request = await requestFactory.CreateAsync(Server!.Id).ConfigureAwait(false);
+        await Session.ConnectAsync(request).ConfigureAwait(false);
+    }
 }
 
 public sealed partial class ConnectingStateViewModel(

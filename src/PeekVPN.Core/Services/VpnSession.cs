@@ -1,10 +1,15 @@
 using PeekVPN.Contracts;
 using PeekVPN.Core.Abstractions;
 using PeekVPN.Core.State;
+using PeekVPN.Core.Vpn;
+using Microsoft.Extensions.Logging;
 
 namespace PeekVPN.Core.Services;
 
-public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposable
+public sealed class VpnSession(
+    IVpnConnectionOrchestrator orchestrator,
+    IVpnApiClient apiClient,
+    ILogger<VpnSession> logger) : IVpnSession, IDisposable
 {
     private readonly SemaphoreSlim _gate = new(1, 1);
     private readonly object _connectCtsLock = new();
@@ -15,9 +20,13 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
 
     public event EventHandler<VpnSessionSnapshot>? StateChanged;
 
-    public async Task ConnectAsync(string serverId, CancellationToken cancellationToken = default)
+    public async Task ConnectAsync(VpnConnectionRequest request, CancellationToken cancellationToken = default)
     {
-        ArgumentException.ThrowIfNullOrWhiteSpace(serverId);
+        ArgumentNullException.ThrowIfNull(request);
+
+        var effectiveRequest = request.Credentials.Length > 0
+            ? request
+            : request with { Credentials = await FetchCredentialsAsync(request.ServerId, cancellationToken).ConfigureAwait(false) };
 
         CancellationTokenSource? linkedCts = null;
         await _gate.WaitAsync(cancellationToken).ConfigureAwait(false);
@@ -29,7 +38,7 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
             }
 
             linkedCts = ReplaceConnectCts(cancellationToken);
-            SetSnapshot(new VpnSessionSnapshot(VpnConnectionState.Connecting, serverId, null));
+            SetSnapshot(new VpnSessionSnapshot(VpnConnectionState.Connecting, request.ServerId, null));
         }
         finally
         {
@@ -43,8 +52,8 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
 
         try
         {
-            var response = await apiClient
-                .ConnectAsync(new ConnectRequest(serverId), linkedCts.Token)
+            var result = await orchestrator
+                .ConnectAsync(effectiveRequest, linkedCts.Token)
                 .ConfigureAwait(false);
 
             await _gate.WaitAsync(CancellationToken.None).ConfigureAwait(false);
@@ -55,19 +64,20 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
                     return;
                 }
 
-                if (response.Success)
+                if (result.IsSuccessful)
                 {
                     SetSnapshot(new VpnSessionSnapshot(
                         VpnConnectionState.Connected,
-                        response.ServerId ?? serverId,
-                        null));
+                        request.ServerId,
+                        null,
+                        _snapshot.Config));
                 }
                 else
                 {
                     SetSnapshot(new VpnSessionSnapshot(
                         VpnConnectionState.Disconnected,
                         null,
-                        response.ErrorMessage ?? "Connection failed."));
+                        result.ErrorMessage ?? "Connection failed."));
                 }
             }
             finally
@@ -92,6 +102,11 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
         }
         catch (Exception ex)
         {
+            logger.LogError(
+                ex,
+                "VPN connection to server {ServerId} failed; transitioning the session to disconnected.",
+                request.ServerId);
+
             await _gate.WaitAsync(CancellationToken.None).ConfigureAwait(false);
             try
             {
@@ -138,7 +153,8 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
             SetSnapshot(new VpnSessionSnapshot(
                 VpnConnectionState.Disconnecting,
                 _snapshot.ActiveServerId,
-                null));
+                null,
+                _snapshot.Config));
         }
         finally
         {
@@ -147,7 +163,7 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
 
         try
         {
-            await apiClient.DisconnectAsync(cancellationToken).ConfigureAwait(false);
+            await orchestrator.DisconnectAsync(cancellationToken).ConfigureAwait(false);
         }
         catch (OperationCanceledException)
         {
@@ -159,7 +175,8 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
                     SetSnapshot(new VpnSessionSnapshot(
                         VpnConnectionState.Connected,
                         _snapshot.ActiveServerId,
-                        null));
+                        null,
+                        _snapshot.Config));
                 }
             }
             finally
@@ -171,6 +188,10 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
         }
         catch (Exception ex)
         {
+            logger.LogError(
+                ex,
+                "VPN disconnect failed; restoring the session to connected.");
+
             await _gate.WaitAsync(CancellationToken.None).ConfigureAwait(false);
             try
             {
@@ -179,7 +200,8 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
                     SetSnapshot(new VpnSessionSnapshot(
                         VpnConnectionState.Connected,
                         _snapshot.ActiveServerId,
-                        ex.Message));
+                        ex.Message,
+                        _snapshot.Config));
                 }
             }
             finally
@@ -217,7 +239,8 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
             SetSnapshot(new VpnSessionSnapshot(
                 VpnConnectionState.Paused,
                 _snapshot.ActiveServerId,
-                null));
+                null,
+                _snapshot.Config));
             return true;
         }
         finally
@@ -239,7 +262,8 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
             SetSnapshot(new VpnSessionSnapshot(
                 VpnConnectionState.Connected,
                 _snapshot.ActiveServerId,
-                null));
+                null,
+                _snapshot.Config));
             return true;
         }
         finally
@@ -258,6 +282,20 @@ public sealed class VpnSession(IVpnApiClient apiClient) : IVpnSession, IDisposab
         }
 
         _gate.Dispose();
+    }
+
+    private async Task<byte[]> FetchCredentialsAsync(string serverId, CancellationToken cancellationToken)
+    {
+        var config = await apiClient
+            .GetCredentialsAsync(serverId, cancellationToken)
+            .ConfigureAwait(false);
+
+        if (config is null)
+        {
+            throw new InvalidOperationException("Failed to fetch VPN credentials.");
+        }
+
+        return System.Text.Encoding.UTF8.GetBytes(config.RawConfig);
     }
 
     private CancellationTokenSource ReplaceConnectCts(CancellationToken externalToken)
