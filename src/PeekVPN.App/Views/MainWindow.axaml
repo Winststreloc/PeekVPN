@@ -1,5 +1,8 @@
 <Window
     Background="{DynamicResource Brush.Background.App}"
+    ExtendClientAreaTitleBarHeightHint="60"
+    ExtendClientAreaToDecorationsHint="True"
+    WindowDecorations="None"
     Height="840"
     Icon="/Assets/main.ico"
     MinHeight="640"
@@ -17,5 +20,81 @@
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:views="using:PeekVPN.App.Views"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <views:ShellView />
+    <Panel>
+        <views:ShellView />
+        <Grid ColumnDefinitions="8,*,8" RowDefinitions="8,*,8">
+            <Rectangle
+                Grid.Row="0"
+                Grid.Column="0"
+                Cursor="TopLeftCorner"
+                Fill="Transparent"
+                PointerMoved="OnResizePointerMoved"
+                PointerPressed="OnResizePointerPressed"
+                PointerReleased="OnResizePointerReleased"
+                Tag="{x:Static WindowEdge.NorthWest}" />
+            <Rectangle
+                Grid.Row="0"
+                Grid.Column="1"
+                Cursor="SizeNorthSouth"
+                Fill="Transparent"
+                PointerMoved="OnResizePointerMoved"
+                PointerPressed="OnResizePointerPressed"
+                PointerReleased="OnResizePointerReleased"
+                Tag="{x:Static WindowEdge.North}" />
+            <Rectangle
+                Grid.Row="0"
+                Grid.Column="2"
+                Cursor="TopRightCorner"
+                Fill="Transparent"
+                PointerMoved="OnResizePointerMoved"
+                PointerPressed="OnResizePointerPressed"
+                PointerReleased="OnResizePointerReleased"
+                Tag="{x:Static WindowEdge.NorthEast}" />
+            <Rectangle
+                Grid.Row="1"
+                Grid.Column="0"
+                Cursor="SizeWestEast"
+                Fill="Transparent"
+                PointerMoved="OnResizePointerMoved"
+                PointerPressed="OnResizePointerPressed"
+                PointerReleased="OnResizePointerReleased"
+                Tag="{x:Static WindowEdge.West}" />
+            <Rectangle
+                Grid.Row="1"
+                Grid.Column="2"
+                Cursor="SizeWestEast"
+                Fill="Transparent"
+                PointerMoved="OnResizePointerMoved"
+                PointerPressed="OnResizePointerPressed"
+                PointerReleased="OnResizePointerReleased"
+                Tag="{x:Static WindowEdge.East}" />
+            <Rectangle
+                Grid.Row="2"
+                Grid.Column="0"
+                Cursor="BottomLeftCorner"
+                Fill="Transparent"
+                PointerMoved="OnResizePointerMoved"
+                PointerPressed="OnResizePointerPressed"
+                PointerReleased="OnResizePointerReleased"
+                Tag="{x:Static WindowEdge.SouthWest}" />
+            <Rectangle
+                Grid.Row="2"
+                Grid.Column="1"
+                Cursor="SizeNorthSouth"
+                Fill="Transparent"
+                PointerMoved="OnResizePointerMoved"
+                PointerPressed="OnResizePointerPressed"
+                PointerReleased="OnResizePointerReleased"
+                Tag="{x:Static WindowEdge.South}" />
+            <Rectangle
+                Grid.Row="2"
+                Grid.Column="2"
+                Cursor="BottomRightCorner"
+                Fill="Transparent"
+                PointerMoved="OnResizePointerMoved"
+                PointerPressed="OnResizePointerPressed"
+                PointerReleased="OnResizePointerReleased"
+                Tag="{x:Static WindowEdge.SouthEast}" />
+        </Grid>
+    </Panel>
 </Window>

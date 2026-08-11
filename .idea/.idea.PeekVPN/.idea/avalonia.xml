@@ -7,6 +7,7 @@
         <entry key="src/PeekVPN.App/App.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
         <entry key="src/PeekVPN.App/Styles/Brushes.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
         <entry key="src/PeekVPN.App/Styles/Colors.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Styles/Controls.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
         <entry key="src/PeekVPN.App/Views/ConnectionPanelView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
         <entry key="src/PeekVPN.App/Views/FeatureCardView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
         <entry key="src/PeekVPN.App/Views/FeatureCardsView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
@@ -15,8 +16,11 @@
         <entry key="src/PeekVPN.App/Views/ProfilePageView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
         <entry key="src/PeekVPN.App/Views/ServerBrowserView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
         <entry key="src/PeekVPN.App/Views/ServerItemView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/SettingsPageView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
         <entry key="src/PeekVPN.App/Views/ShellView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/StatisticsPageView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
         <entry key="src/PeekVPN.App/Views/StatsSummaryView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
+        <entry key="src/PeekVPN.App/Views/WorkspaceView.axaml" value="src/PeekVPN.App/PeekVPN.App.csproj" />
       </map>
     </option>
   </component>

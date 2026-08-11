@@ -1,200 +1,238 @@
-<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <Border>
+            <StackPanel Spacing="8">
+                <Button
+                    Classes="PrimaryCta"
+                    Height="44"
+                    Width="88" />
+                <Button
+                    Classes="OutlineCta"
+                    Height="44"
+                    Width="88" />
+                <Button
+                    Classes="CompactConnectionAction"
+                    Height="44"
+                    Width="88" />
+                <Button
+                    Classes="IconAction"
+                    Height="44"
+                    Width="88" />
+                <Button
+                    Classes="GhostIcon"
+                    Height="44"
+                    Width="88" />
+                <Button
+                    Classes="DarkAction"
+                    Height="44"
+                    Width="88" />
+                <Button
+                    Classes="NavIcon"
+                    Height="44"
+                    Width="88" />
+                <Button
+                    Classes="SettingsNavigation"
+                    Height="44"
+                    Width="88" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
     <Style Selector="Button.PrimaryCta">
-        <Setter Property="Background" Value="{DynamicResource Brush.Accent.Primary}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.OnAccent}"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="FontSize" Value="13"/>
-        <Setter Property="Padding" Value="22,11"/>
-        <Setter Property="CornerRadius" Value="999"/>
-        <Setter Property="MinWidth" Value="160"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Accent.Primary}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.OnAccent}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="22,11" />
+        <Setter Property="CornerRadius" Value="999" />
+        <Setter Property="MinWidth" Value="160" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
     <Style Selector="Button.PrimaryCta:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource Brush.Accent.PrimaryHover}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Accent.PrimaryHover}" />
     </Style>
 
     <Style Selector="Button.OutlineCta">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="FontSize" Value="13"/>
-        <Setter Property="Padding" Value="22,11"/>
-        <Setter Property="CornerRadius" Value="999"/>
-        <Setter Property="MinWidth" Value="140"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}"/>
-        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="22,11" />
+        <Setter Property="CornerRadius" Value="999" />
+        <Setter Property="MinWidth" Value="140" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}" />
+        <Setter Property="BorderThickness" Value="1.5" />
     </Style>
     <Style Selector="Button.OutlineCta:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
     </Style>
 
     <Style Selector="Button.CompactConnectionAction">
-        <Setter Property="Padding" Value="18,8"/>
+        <Setter Property="Padding" Value="18,8" />
     </Style>
 
     <Style Selector="Button.IconAction.Round">
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Height" Value="40"/>
-        <Setter Property="CornerRadius" Value="20"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}"/>
-        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}" />
+        <Setter Property="BorderThickness" Value="1.5" />
     </Style>
     <Style Selector="Button.IconAction.Round:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
     </Style>
 
     <Style Selector="Button.IconAction">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.IconMuted}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
-        <Setter Property="Width" Value="36"/>
-        <Setter Property="Height" Value="36"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="CornerRadius" Value="10"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.IconMuted}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+        <Setter Property="Width" Value="36" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
     <Style Selector="Button.IconAction:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
     </Style>
 
     <Style Selector="Button.GhostIcon">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
-        <Setter Property="Width" Value="32"/>
-        <Setter Property="Height" Value="32"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="CornerRadius" Value="8"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+        <Setter Property="Width" Value="46" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
     <Style Selector="Button.GhostIcon:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
     </Style>
 
     <Style Selector="Button.DarkAction">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.ButtonDark}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.OnDark}"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Padding" Value="16,10"/>
-        <Setter Property="CornerRadius" Value="12"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.ButtonDark}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.OnDark}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="16,10" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Cursor" Value="Hand" />
     </Style>
 
     <Style Selector="Button.NavIcon">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
-        <Setter Property="Width" Value="44"/>
-        <Setter Property="Height" Value="44"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="CornerRadius" Value="12"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+        <Setter Property="Width" Value="44" />
+        <Setter Property="Height" Value="44" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
     <Style Selector="Button.NavIcon:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
     </Style>
     <Style Selector="Button.NavIcon.Active">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
     </Style>
     <Style Selector="Button.NavIcon.active">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
     </Style>
     <Style Selector="Button.NavIcon.Power">
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Danger}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Danger}" />
     </Style>
 
     <Style Selector="Button.GhostLink">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Link}"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Link}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
     </Style>
 
     <Style Selector="TextBox.SearchBox">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.Search}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="CornerRadius" Value="18"/>
-        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Search}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="18" />
+        <Setter Property="Padding" Value="14,10" />
     </Style>
 
     <Style Selector="Border.Card">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.Card}"/>
-        <Setter Property="CornerRadius" Value="22"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Card}" />
+        <Setter Property="CornerRadius" Value="22" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="20" />
     </Style>
     <Style Selector="Border.NoticeCard">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.Upsell}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="CornerRadius" Value="14"/>
-        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Upsell}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Padding" Value="14,10" />
     </Style>
     <Style Selector="Border.StatListItem">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.Surface}"/>
-        <Setter Property="CornerRadius" Value="12"/>
-        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Surface}" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="10" />
     </Style>
     <Style Selector="Border.SettingsSubsection">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.Surface}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="CornerRadius" Value="14"/>
-        <Setter Property="Padding" Value="14"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.Surface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Border.Card}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Padding" Value="14" />
     </Style>
     <Style Selector="Grid.SettingRow">
-        <Setter Property="Margin" Value="16,12"/>
+        <Setter Property="Margin" Value="16,12" />
     </Style>
     <Style Selector="Grid.SettingRow.Last">
-        <Setter Property="Margin" Value="16,12,16,16"/>
+        <Setter Property="Margin" Value="16,12,16,16" />
     </Style>
     <Style Selector="TextBlock.SettingDescription">
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+        <Setter Property="FontSize" Value="12" />
     </Style>
     <Style Selector="TextBlock.SettingsNavigationLabel">
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
-        <Setter Property="Margin" Value="12,0,0,8"/>
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+        <Setter Property="Margin" Value="12,0,0,8" />
     </Style>
     <Style Selector="Button.SettingsNavigation">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="CornerRadius" Value="10"/>
-        <Setter Property="Padding" Value="12,10"/>
-        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Secondary}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Padding" Value="12,10" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Cursor" Value="Hand" />
     </Style>
     <Style Selector="Button.SettingsNavigation:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
     </Style>
     <Style Selector="Button.SettingsNavigation.active">
-        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Background.NavActive}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
     <Style Selector="ToggleSwitch">
-        <Setter Property="OnContent" Value=""/>
-        <Setter Property="OffContent" Value=""/>
+        <Setter Property="OnContent" Value="" />
+        <Setter Property="OffContent" Value="" />
     </Style>
 
 </Styles>

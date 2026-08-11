@@ -49,7 +49,6 @@ sealed class Program
 #if DEBUG
             .WithDeveloperTools()
 #endif
-            .WithInterFont()
             .With(new FontManagerOptions
             {
                 DefaultFamilyName = InterFontFamily
