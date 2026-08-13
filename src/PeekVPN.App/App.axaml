@@ -22,7 +22,7 @@
     </Application.Resources>
 
     <Application.Styles>
-        <FluentTheme />
+        <SimpleTheme />
         <StyleInclude Source="avares://PeekVPN/Styles/Controls.axaml" />
 
         <Style Selector="Window">

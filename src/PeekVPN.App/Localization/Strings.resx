@@ -128,8 +128,7 @@
   <data name="ProfileEditProfile" xml:space="preserve"><value>Edit profile</value></data>
 
   <data name="SettingsVpnConnectionSection" xml:space="preserve"><value>VPN Connection</value></data>
-  <data name="SettingsSecurityAndPrivacySection" xml:space="preserve"><value>Security &amp; Privacy</value></data>
-  <data name="SettingsGeneralSection" xml:space="preserve"><value>General</value></data>
+    <data name="SettingsGeneralSection" xml:space="preserve"><value>General</value></data>
   <data name="SettingsAutoConnectTitle" xml:space="preserve"><value>Auto-connect</value></data>
   <data name="SettingsAutoConnectDescription" xml:space="preserve"><value>Connect automatically when the app opens.</value></data>
   <data name="SettingsAutoConnectTargetTitle" xml:space="preserve"><value>Connect using</value></data>
@@ -143,9 +142,9 @@
   <data name="SettingsServerSingapore" xml:space="preserve"><value>Singapore</value></data>
   <data name="SettingsSplitTunnelingTitle" xml:space="preserve"><value>Split tunneling</value></data>
   <data name="SettingsSplitTunnelingDescription" xml:space="preserve"><value>Control which domains and applications use the VPN connection.</value></data>
-  <data name="SettingsSplitTunnelingDomainsTitle" xml:space="preserve"><value>Split tunneling for domains</value></data>
+    <data name="SettingsSplitTunnelingDomainsTitle" xml:space="preserve"><value>Domains</value></data>
   <data name="SettingsSplitTunnelingDomainsDescription" xml:space="preserve"><value>Exclude selected domains from the VPN connection.</value></data>
-  <data name="SettingsSplitTunnelingApplicationsTitle" xml:space="preserve"><value>Split tunneling for applications</value></data>
+    <data name="SettingsSplitTunnelingApplicationsTitle" xml:space="preserve"><value>Applications</value></data>
   <data name="SettingsSplitTunnelingApplicationsDescription" xml:space="preserve"><value>Exclude selected applications from the VPN connection.</value></data>
   <data name="SettingsSplitTunnelingAddDomainWatermark" xml:space="preserve"><value>example.com</value></data>
   <data name="SettingsSplitTunnelingAddApplicationWatermark" xml:space="preserve"><value>Application name or path</value></data>
@@ -185,4 +184,13 @@
   <data name="SettingsResetSettingsTitle" xml:space="preserve"><value>Reset all app settings to defaults</value></data>
   <data name="SettingsResetSettingsDescription" xml:space="preserve"><value>Restore the settings on this page to their original values.</value></data>
   <data name="SettingsResetSettingsButton" xml:space="preserve"><value>Reset settings</value></data>
+    <data name="SettingsAppearanceSection" xml:space="preserve">
+        <value>Appearance</value>
+    </data>
+    <data name="SettingsKillSwitchSection" xml:space="preserve">
+        <value>Kill Switch</value>
+    </data>
+    <data name="SettingsSplitTunnelingSection" xml:space="preserve">
+        <value>Split Tunneling</value>
+    </data>
 </root>

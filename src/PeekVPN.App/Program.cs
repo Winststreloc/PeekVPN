@@ -1,6 +1,4 @@
-﻿using System;
-using Avalonia;
-using Avalonia.Media;
+﻿using Avalonia;
 using PeekVPN.Core.Logging;
 using Serilog;
 
@@ -8,8 +6,6 @@ namespace PeekVPN.App;
 
 sealed class Program
 {
-    private const string InterFontFamily = "avares://PeekVPN/Assets/Inter.ttf#Inter";
-
     [STAThread]
     public static void Main(string[] args)
     {
@@ -49,9 +45,5 @@ sealed class Program
 #if DEBUG
             .WithDeveloperTools()
 #endif
-            .With(new FontManagerOptions
-            {
-                DefaultFamilyName = InterFontFamily
-            })
             .LogToTrace();
 }

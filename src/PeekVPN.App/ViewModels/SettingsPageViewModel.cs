@@ -10,35 +10,33 @@ namespace PeekVPN.App.ViewModels;
 public enum SettingsSection
 {
     General,
+    Appearance,
     VpnConnection,
-    SecurityAndPrivacy
+    KillSwitch,
+    SplitTunneling,
 }
 
 public sealed partial class SettingsPageViewModel : ViewModelBase
 {
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsAppearanceSelected))]
+    [NotifyPropertyChangedFor(nameof(IsKillSwitchSelected))]
     [NotifyPropertyChangedFor(nameof(IsVpnConnectionSelected))]
-    [NotifyPropertyChangedFor(nameof(IsSecurityAndPrivacySelected))]
+    [NotifyPropertyChangedFor(nameof(IsSplitTunnelingSelected))]
     [NotifyPropertyChangedFor(nameof(IsGeneralSelected))]
-    private SettingsSection _selectedSection = SettingsSection.General;
+    public partial SettingsSection SelectedSection { get; set; } = SettingsSection.General;
 
     [ObservableProperty]
-    private bool _autoConnect = true;
+    public partial bool AutoConnect { get; set; } = true;
 
     [ObservableProperty]
-    private bool _autoConnectUseFastestServer = true;
+    public partial bool AutoConnectUseFastestServer { get; set; } = true;
 
     [ObservableProperty]
-    private string _autoConnectServer = Strings.SettingsServerPlaceholder;
+    public partial string AutoConnectServer { get; set; } = Strings.SettingsServerPlaceholder;
 
     [ObservableProperty]
-    private bool _splitTunneling;
-
-    [ObservableProperty]
-    private bool _splitTunnelingForDomains;
-
-    [ObservableProperty]
-    private bool _splitTunnelingForApplications;
+    public partial bool SplitTunneling { get; set; }
 
     [ObservableProperty]
     private string _newSplitTunnelingDomain = string.Empty;
@@ -79,55 +77,6 @@ public sealed partial class SettingsPageViewModel : ViewModelBase
     [ObservableProperty]
     private bool _sendAppLogs;
 
-    public string VpnConnectionSectionTitle => Strings.SettingsVpnConnectionSection;
-    public string SecurityAndPrivacySectionTitle => Strings.SettingsSecurityAndPrivacySection;
-    public string GeneralSectionTitle => Strings.SettingsGeneralSection;
-    public string AutoConnectTitle => Strings.SettingsAutoConnectTitle;
-    public string AutoConnectDescription => Strings.SettingsAutoConnectDescription;
-    public string AutoConnectTargetTitle => Strings.SettingsAutoConnectTargetTitle;
-    public string AutoConnectTargetDescription => Strings.SettingsAutoConnectTargetDescription;
-    public string FastestServer => Strings.SettingsFastestServer;
-    public string AutoConnectServerTitle => Strings.SettingsAutoConnectServerTitle;
-    public string AutoConnectServerDescription => Strings.SettingsAutoConnectServerDescription;
-    public string SplitTunnelingTitle => Strings.SettingsSplitTunnelingTitle;
-    public string SplitTunnelingDescription => Strings.SettingsSplitTunnelingDescription;
-    public string SplitTunnelingDomainsTitle => Strings.SettingsSplitTunnelingDomainsTitle;
-    public string SplitTunnelingDomainsDescription => Strings.SettingsSplitTunnelingDomainsDescription;
-    public string SplitTunnelingApplicationsTitle => Strings.SettingsSplitTunnelingApplicationsTitle;
-    public string SplitTunnelingApplicationsDescription => Strings.SettingsSplitTunnelingApplicationsDescription;
-    public string SplitTunnelingAddDomainWatermark => Strings.SettingsSplitTunnelingAddDomainWatermark;
-    public string SplitTunnelingAddApplicationWatermark => Strings.SettingsSplitTunnelingAddApplicationWatermark;
-    public string SplitTunnelingAddButton => Strings.SettingsSplitTunnelingAddButton;
-    public string SplitTunnelingDomainsEmpty => Strings.SettingsSplitTunnelingDomainsEmpty;
-    public string SplitTunnelingApplicationsEmpty => Strings.SettingsSplitTunnelingApplicationsEmpty;
-    public string KillSwitchTitle => Strings.SettingsKillSwitchTitle;
-    public string KillSwitchDescription => Strings.SettingsKillSwitchDescription;
-    public string KillSwitchModeTitle => Strings.SettingsKillSwitchModeTitle;
-    public string KillSwitchModeDescription => Strings.SettingsKillSwitchModeDescription;
-    public string KillSwitchSoftMode => Strings.SettingsKillSwitchSoftMode;
-    public string KillSwitchHardMode => Strings.SettingsKillSwitchHardMode;
-    public string VpnProtocolTitle => Strings.SettingsVpnProtocolTitle;
-    public string VpnProtocolDescription => Strings.SettingsVpnProtocolDescription;
-    public string CustomDnsTitle => Strings.SettingsCustomDnsTitle;
-    public string CustomDnsDescription => Strings.SettingsCustomDnsDescription;
-    public string AutoStartupTitle => Strings.SettingsAutoStartupTitle;
-    public string AutoStartupDescription => Strings.SettingsAutoStartupDescription;
-    public string StayHiddenTitle => Strings.SettingsStayHiddenTitle;
-    public string StayHiddenDescription => Strings.SettingsStayHiddenDescription;
-    public string AutoUpdatesTitle => Strings.SettingsAutoUpdatesTitle;
-    public string AutoUpdatesDescription => Strings.SettingsAutoUpdatesDescription;
-    public string AllowBackgroundProcessesTitle => Strings.SettingsAllowBackgroundProcessesTitle;
-    public string AllowBackgroundProcessesDescription => Strings.SettingsAllowBackgroundProcessesDescription;
-    public string AppearanceTitle => Strings.SettingsAppearanceTitle;
-    public string AppearanceDescription => Strings.SettingsAppearanceDescription;
-    public string ShowNotificationsTitle => Strings.SettingsShowNotificationsTitle;
-    public string ShowNotificationsDescription => Strings.SettingsShowNotificationsDescription;
-    public string SendAppLogsTitle => Strings.SettingsSendAppLogsTitle;
-    public string SendAppLogsDescription => Strings.SettingsSendAppLogsDescription;
-    public string ResetSettingsTitle => Strings.SettingsResetSettingsTitle;
-    public string ResetSettingsDescription => Strings.SettingsResetSettingsDescription;
-    public string ResetSettingsButton => Strings.SettingsResetSettingsButton;
-
     public IReadOnlyList<string> AutoConnectServers { get; } =
     [
         Strings.SettingsServerPlaceholder,
@@ -156,9 +105,11 @@ public sealed partial class SettingsPageViewModel : ViewModelBase
         Strings.SettingsAppearanceDark
     ];
 
+    public bool IsSplitTunnelingSelected => SelectedSection is SettingsSection.SplitTunneling;
+    public bool IsKillSwitchSelected => SelectedSection is SettingsSection.KillSwitch;
     public bool IsVpnConnectionSelected => SelectedSection is SettingsSection.VpnConnection;
-    public bool IsSecurityAndPrivacySelected => SelectedSection is SettingsSection.SecurityAndPrivacy;
     public bool IsGeneralSelected => SelectedSection is SettingsSection.General;
+    public bool IsAppearanceSelected => SelectedSection is SettingsSection.Appearance;
     public bool IsAutoConnectTargetEnabled => true;
     public bool IsAutoConnectServerSelectionEnabled => !AutoConnectUseFastestServer;
     public bool IsSplitTunnelingOptionsEnabled => true;
@@ -226,8 +177,6 @@ public sealed partial class SettingsPageViewModel : ViewModelBase
         AutoConnectUseFastestServer = true;
         AutoConnectServer = Strings.SettingsServerPlaceholder;
         SplitTunneling = false;
-        SplitTunnelingForDomains = false;
-        SplitTunnelingForApplications = false;
         NewSplitTunnelingDomain = string.Empty;
         NewSplitTunnelingApplication = string.Empty;
         SplitTunnelingDomains.Clear();

@@ -139,7 +139,8 @@ public static class Strings
     public static string ProfileEditProfile => Get(nameof(ProfileEditProfile));
 
     public static string SettingsVpnConnectionSection => Get(nameof(SettingsVpnConnectionSection));
-    public static string SettingsSecurityAndPrivacySection => Get(nameof(SettingsSecurityAndPrivacySection));
+    public static string SettingsKillSwitchSection => Get(nameof(SettingsKillSwitchSection));
+    public static string SettingsSplitTunnelingSection => Get(nameof(SettingsSplitTunnelingSection));
     public static string SettingsGeneralSection => Get(nameof(SettingsGeneralSection));
     public static string SettingsAutoConnectTitle => Get(nameof(SettingsAutoConnectTitle));
     public static string SettingsAutoConnectDescription => Get(nameof(SettingsAutoConnectDescription));
@@ -184,6 +185,7 @@ public static class Strings
     public static string SettingsAutoUpdatesDescription => Get(nameof(SettingsAutoUpdatesDescription));
     public static string SettingsAllowBackgroundProcessesTitle => Get(nameof(SettingsAllowBackgroundProcessesTitle));
     public static string SettingsAllowBackgroundProcessesDescription => Get(nameof(SettingsAllowBackgroundProcessesDescription));
+    public static string SettingsAppearanceSection => Get(nameof(SettingsAppearanceSection));
     public static string SettingsAppearanceTitle => Get(nameof(SettingsAppearanceTitle));
     public static string SettingsAppearanceDescription => Get(nameof(SettingsAppearanceDescription));
     public static string SettingsAppearanceSystem => Get(nameof(SettingsAppearanceSystem));
@@ -196,6 +198,5 @@ public static class Strings
     public static string SettingsResetSettingsTitle => Get(nameof(SettingsResetSettingsTitle));
     public static string SettingsResetSettingsDescription => Get(nameof(SettingsResetSettingsDescription));
     public static string SettingsResetSettingsButton => Get(nameof(SettingsResetSettingsButton));
-    private static string Get(string name)
-        => ResourceManager.GetString(name, _culture) ?? name;
+    private static string Get(string name) => ResourceManager.GetString(name, _culture) ?? name;
 }

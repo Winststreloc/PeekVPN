@@ -1,31 +1,30 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="Color.Background.App">#F3EDE4</Color>
-    <Color x:Key="Color.Background.Surface">#FFF9F2</Color>
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="Color.Background.App">#F5F1EA</Color>
+    <Color x:Key="Color.Background.Surface">#FFFCF7</Color>
     <Color x:Key="Color.Background.Card">#FFFFFF</Color>
-    <Color x:Key="Color.Background.Sidebar">#F7F1E8</Color>
-    <Color x:Key="Color.Background.NavActive">#E8DCCB</Color>
-    <Color x:Key="Color.Background.Search">#EFE6DA</Color>
-    <Color x:Key="Color.Background.Upsell">#EFE6DA</Color>
-    <Color x:Key="Color.Background.ButtonDark">#3A2A1E</Color>
-    <Color x:Key="Color.Background.IconMuted">#E8DFD3</Color>
+    <Color x:Key="Color.Background.Sidebar">#EEE8DE</Color>
+    <Color x:Key="Color.Background.NavActive">#E3D4BE</Color>
+    <Color x:Key="Color.Background.Search">#EAE2D6</Color>
+    <Color x:Key="Color.Background.Upsell">#EAE2D6</Color>
+    <Color x:Key="Color.Background.ButtonDark">#241A12</Color>
+    <Color x:Key="Color.Background.IconMuted">#DED4C7</Color>
 
-    <Color x:Key="Color.Text.Primary">#2C2118</Color>
-    <Color x:Key="Color.Text.Secondary">#7A6A58</Color>
-    <Color x:Key="Color.Text.Muted">#A09080</Color>
-    <Color x:Key="Color.Text.OnAccent">#2C2118</Color>
-    <Color x:Key="Color.Text.OnDark">#FFF8EF</Color>
-    <Color x:Key="Color.Text.Danger">#C45C4A</Color>
-    <Color x:Key="Color.Text.Link">#6B5A48</Color>
+    <Color x:Key="Color.Text.Primary">#21170F</Color>
+    <Color x:Key="Color.Text.Secondary">#665546</Color>
+    <Color x:Key="Color.Text.Muted">#8F8173</Color>
+    <Color x:Key="Color.Text.OnAccent">#21170F</Color>
+    <Color x:Key="Color.Text.OnDark">#FFF9F0</Color>
+    <Color x:Key="Color.Text.Danger">#C83F36</Color>
+    <Color x:Key="Color.Text.Link">#7A4F18</Color>
 
-    <Color x:Key="Color.Accent.Primary">#E8C15A</Color>
-    <Color x:Key="Color.Accent.PrimaryHover">#F0CF72</Color>
-    <Color x:Key="Color.Brand.Shield">#C9A227</Color>
+    <Color x:Key="Color.Accent.Primary">#F2B928</Color>
+    <Color x:Key="Color.Accent.PrimaryHover">#FFC94D</Color>
+    <Color x:Key="Color.Brand.Shield">#D89A00</Color>
 
-    <Color x:Key="Color.Status.Danger">#D64545</Color>
-    <Color x:Key="Color.Status.Success">#3FA66A</Color>
-    <Color x:Key="Color.Status.Warning">#D4A017</Color>
-    <Color x:Key="Color.Status.Neutral">#A09080</Color>
+    <Color x:Key="Color.Status.Danger">#D93D35</Color>
+    <Color x:Key="Color.Status.Success">#299B61</Color>
+    <Color x:Key="Color.Status.Warning">#E0A800</Color>
+    <Color x:Key="Color.Status.Neutral">#817568</Color>
     <Color x:Key="Color.Status.ActiveBadge">#E7F6EC</Color>
     <Color x:Key="Color.Status.ActiveBadgeText">#2F8F57</Color>
     <Color x:Key="Color.Status.LiteBadge">#EEE4D6</Color>
