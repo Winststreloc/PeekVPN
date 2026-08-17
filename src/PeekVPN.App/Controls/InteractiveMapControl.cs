@@ -11,6 +11,7 @@ using Avalonia.Skia;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 using PeekVPN.App.Maps;
+using PeekVPN.App.Theming;
 using PeekVPN.App.ViewModels;
 using PeekVPN.Core.State;
 using SkiaSharp;
@@ -137,22 +138,35 @@ public sealed class InteractiveMapControl : Control
             Markers ?? [],
             _pulseAnimationRunning
                 ? (DateTime.UtcNow - _pulseStartedAt).TotalSeconds / PulsePeriodSeconds % 1
-                : 0));
+                : 0,
+            ThemePalette.CaptureMapColors(this)));
     }
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
         _isAttachedToVisualTree = true;
+        if (Application.Current is { } application)
+        {
+            application.ActualThemeVariantChanged += OnActualThemeVariantChanged;
+        }
+
         UpdateAnimationTimer();
     }
 
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
+        if (Application.Current is { } application)
+        {
+            application.ActualThemeVariantChanged -= OnActualThemeVariantChanged;
+        }
+
         _isAttachedToVisualTree = false;
         _animationTimer.Stop();
         base.OnDetachedFromVisualTree(e);
     }
+
+    private void OnActualThemeVariantChanged(object? sender, EventArgs e) => InvalidateVisual();
 
     protected override void OnPointerPressed(PointerPressedEventArgs e)
     {
@@ -411,7 +425,8 @@ public sealed class InteractiveMapControl : Control
         double scale,
         Vector translation,
         IEnumerable<MapMarkerViewModel> markers,
-        double pulsePhase) : ICustomDrawOperation
+        double pulsePhase,
+        MapThemeColors theme) : ICustomDrawOperation
     {
         public Rect Bounds { get; } = bounds;
 
@@ -428,15 +443,6 @@ public sealed class InteractiveMapControl : Control
             canvas.Save();
             canvas.ClipRect(new SKRect(0, 0, (float)Bounds.Width, (float)Bounds.Height));
 
-            if (picture is not null)
-            {
-                canvas.Translate((float)translation.X, (float)translation.Y);
-                canvas.Scale((float)scale);
-                canvas.DrawPicture(picture);
-                canvas.Restore();
-                canvas.Save();
-            }
-
             using var markerFill = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill };
             using var markerStroke = new SKPaint
             {
@@ -451,6 +457,20 @@ public sealed class InteractiveMapControl : Control
                 MaskFilter = SKMaskFilter.CreateBlur(SKBlurStyle.Normal, 2.5f),
             };
 
+            if (picture is not null)
+            {
+                canvas.Translate((float)translation.X, (float)translation.Y);
+                canvas.Scale((float)scale);
+                using var landPaint = new SKPaint
+                {
+                    IsAntialias = true,
+                    ColorFilter = SKColorFilter.CreateBlendMode(theme.Land, SKBlendMode.SrcIn),
+                };
+                canvas.DrawPicture(picture, landPaint);
+                canvas.Restore();
+                canvas.Save();
+            }
+
             foreach (var marker in markers)
             {
                 var position = MapViewportTransform.MapToScreen(marker.Position, Vector.Zero, translation, scale);
@@ -460,17 +480,17 @@ public sealed class InteractiveMapControl : Control
                     // display size regardless of the map zoom.
                     var progress = (float)((1 - Math.Cos(pulsePhase * Math.PI * 2)) / 2);
                     var radius = MarkerRadius + 2 + progress * 4;
-                    pulsePaint.Color = SKColor.Parse("#3FA66A").WithAlpha((byte)(48 * (1 - progress) + 8));
+                    pulsePaint.Color = theme.Connected.WithAlpha((byte)(48 * (1 - progress) + 8));
                     canvas.DrawCircle((float)position.X, (float)position.Y, radius, pulsePaint);
                 }
 
                 (markerFill.Color, markerStroke.Color) = marker.ConnectionState switch
                 {
-                    VpnConnectionState.Connected => (SKColor.Parse("#3FA66A"), SKColor.Parse("#E7F6EC")),
-                    VpnConnectionState.Paused => (SKColor.Parse("#F5E6B8"), SKColor.Parse("#D4A017")),
+                    VpnConnectionState.Connected => (theme.Connected, theme.ConnectedRing),
+                    VpnConnectionState.Paused => (theme.PausedFill, theme.Paused),
                     VpnConnectionState.Connecting or VpnConnectionState.Disconnecting =>
-                        (SKColor.Parse("#E8C15A"), SKColor.Parse("#C9A227")),
-                    _ => (SKColor.Parse("#E8DFD3"), SKColor.Parse("#7A6A58")),
+                        (theme.Connecting, theme.Connected),
+                    _ => (theme.IdleFill, theme.Idle),
                 };
                 canvas.DrawCircle((float)position.X, (float)position.Y, MarkerRadius, markerFill);
                 canvas.DrawCircle((float)position.X, (float)position.Y, MarkerRadius, markerStroke);

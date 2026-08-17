@@ -4,14 +4,14 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StackPanel Spacing="8">
-        <Grid ColumnDefinitions="40,*" ColumnSpacing="10" MinHeight="40">
+    <StackPanel Spacing="{StaticResource Space.Sm}">
+        <Grid ColumnDefinitions="40,*" ColumnSpacing="{StaticResource Space.Sm}" MinHeight="{StaticResource Size.Flag}">
             <Viewbox Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Width="32">
                 <Path Data="M9,18 L9,12 A7,7 0 0,1 21,7 M25,18 L25,31 L7,31 L7,18 Z"
                       Fill="{DynamicResource Brush.Text.Danger}" />
             </Viewbox>
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
+                <TextBlock FontSize="{StaticResource Type.TitleSm}" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
             </StackPanel>
         </Grid>
         <TextBlock Foreground="{DynamicResource Brush.Text.Danger}" Text="{Binding LastError}" TextWrapping="Wrap" />

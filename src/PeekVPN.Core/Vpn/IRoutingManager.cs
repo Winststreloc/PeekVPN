@@ -10,4 +10,10 @@ public interface IRoutingManager
     Task RemoveRouteAsync(Route route, CancellationToken cancellationToken = default);
 
     Task FlushInterfaceRoutesAsync(string interfaceName, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Pins the current physical route to <paramref name="hostIp"/> so later default-route
+    /// changes through the tunnel cannot create a routing loop to the VPN endpoint.
+    /// </summary>
+    Task PreserveHostRouteAsync(string hostIp, CancellationToken cancellationToken = default);
 }

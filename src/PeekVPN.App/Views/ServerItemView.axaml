@@ -18,18 +18,18 @@
             Classes="ServerRow"
             Command="{Binding ConnectServerCommand}"
             CommandParameter="{Binding}">
-            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="{StaticResource Space.Sm}">
                 <Border
                     Background="{DynamicResource Brush.Background.IconMuted}"
                     ClipToBounds="True"
-                    CornerRadius="14"
-                    Height="28"
+                    CornerRadius="{StaticResource Radius.Xl}"
+                    Height="{StaticResource Size.Icon.Sm}"
                     IsHitTestVisible="False"
                     VerticalAlignment="Center"
-                    Width="28">
+                    Width="{StaticResource Size.Icon.Sm}">
                     <Panel>
                         <TextBlock
-                            FontSize="9"
+                            FontSize="{StaticResource Type.Micro}"
                             FontWeight="Bold"
                             Foreground="{DynamicResource Brush.Text.Primary}"
                             HorizontalAlignment="Center"
@@ -45,13 +45,13 @@
                 </Border>
                 <StackPanel Grid.Column="1" IsHitTestVisible="False" Spacing="0" VerticalAlignment="Center">
                     <TextBlock
-                        FontSize="12"
+                        FontSize="{StaticResource Type.Label}"
                         FontWeight="SemiBold"
                         Foreground="{DynamicResource Brush.Text.Primary}"
                         Text="{Binding Country}"
                         TextTrimming="CharacterEllipsis" />
                     <TextBlock
-                        FontSize="10"
+                        FontSize="{StaticResource Type.Micro}"
                         Foreground="{DynamicResource Brush.Text.Secondary}"
                         Text="{Binding CityLabel}"
                         TextTrimming="CharacterEllipsis" />
@@ -60,19 +60,20 @@
                     Grid.Column="2"
                     IsHitTestVisible="False"
                     Orientation="Horizontal"
-                    Spacing="5"
+                    Spacing="{StaticResource Space.Xs}"
                     VerticalAlignment="Center">
                     <TextBlock
-                        FontSize="10"
+                        Classes="Mono"
+                        FontSize="{StaticResource Type.Micro}"
                         FontWeight="SemiBold"
                         Foreground="{DynamicResource Brush.Text.Secondary}"
                         Text="{Binding LatencyText}"
                         VerticalAlignment="Center" />
                     <Ellipse
                         Fill="{Binding ConnectionState, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}}"
-                        Height="7"
+                        Height="{StaticResource Size.Dot.Sm}"
                         VerticalAlignment="Center"
-                        Width="7" />
+                        Width="{StaticResource Size.Dot.Sm}" />
                 </StackPanel>
             </Grid>
         </Button>

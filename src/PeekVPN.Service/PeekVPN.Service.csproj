@@ -23,4 +23,11 @@
     <ProjectReference Include="..\PeekVPN.Infrastructure\PeekVPN.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\PeekVPN.Infrastructure\Native\win-x64\wintun.dll" Link="wintun.dll" Condition="Exists('..\PeekVPN.Infrastructure\Native\win-x64\wintun.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

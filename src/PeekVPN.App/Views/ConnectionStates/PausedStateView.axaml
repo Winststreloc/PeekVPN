@@ -6,15 +6,15 @@
     xmlns:ctrl="using:PeekVPN.App.Controls"
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StackPanel Spacing="8">
-        <Grid ColumnDefinitions="40,*" ColumnSpacing="10" MinHeight="40">
+    <StackPanel Spacing="{StaticResource Space.Sm}">
+        <Grid ColumnDefinitions="40,*" ColumnSpacing="{StaticResource Space.Sm}" MinHeight="{StaticResource Size.Flag}">
             <Border Background="{DynamicResource Brush.Background.IconMuted}"
                     BorderBrush="{Binding State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
-                    BorderThickness="2.5"
+                    BorderThickness="{StaticResource Stroke.Live}"
                     ClipToBounds="True"
-                    CornerRadius="20"
-                    Height="40"
-                    Width="40">
+                    CornerRadius="{StaticResource Radius.Full}"
+                    Height="{StaticResource Size.Flag}"
+                    Width="{StaticResource Size.Flag}">
                 <ctrl:SvgImage
                     HorizontalAlignment="Stretch"
                     RasterWidth="96"
@@ -23,11 +23,11 @@
                     VerticalAlignment="Stretch" />
             </Border>
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
+                <TextBlock FontSize="{StaticResource Type.TitleSm}" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
             </StackPanel>
         </Grid>
         <TextBlock Foreground="{DynamicResource Brush.Text.Danger}" Text="{Binding LastError}" TextWrapping="Wrap" />
-        <StackPanel Orientation="Horizontal" Spacing="8">
+        <StackPanel Orientation="Horizontal" Spacing="{StaticResource Space.Sm}">
             <Button Classes="OutlineCta CompactConnectionAction" Command="{Binding DisconnectCommand}" Content="{Binding DisconnectText}" />
             <Button Classes="IconAction Round" Command="{Binding ResumeCommand}" ToolTip.Tip="{Binding ResumeText}">
                 <Viewbox Height="14" Width="14">

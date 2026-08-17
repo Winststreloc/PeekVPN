@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PeekVPN.Infrastructure\PeekVPN.Infrastructure.csproj" />
     <ProjectReference Include="..\PeekVPN.App\PeekVPN.App.csproj" />
     <ProjectReference Include="..\PeekVPN.Contracts\PeekVPN.Contracts.csproj" />
     <ProjectReference Include="..\PeekVPN.Core\PeekVPN.Core.csproj" />

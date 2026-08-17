@@ -18,7 +18,7 @@ public static class PlatformNetworkServicesFactory
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            throw new PlatformNotSupportedException("Windows platform services are not implemented yet.");
+            return new WindowsPlatformNetworkServices(loggerFactory);
         }
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))

@@ -4,23 +4,38 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Border Classes="Card" MinHeight="110" Padding="14">
-        <StackPanel Spacing="8">
+    <Border Classes="Card" MinHeight="110" Padding="{StaticResource Inset.Md}">
+        <StackPanel Spacing="{StaticResource Space.Sm}">
             <Grid ColumnDefinitions="Auto,*,Auto">
-                <Border Background="{DynamicResource Brush.Background.IconMuted}" CornerRadius="10" Height="34" Width="34">
+                <Border
+                    Background="{DynamicResource Brush.Background.IconMuted}"
+                    CornerRadius="{StaticResource Radius.Md}"
+                    Height="34"
+                    Width="34">
                     <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding IconText}" VerticalAlignment="Center" />
                 </Border>
-                <Border Background="{DynamicResource Brush.Status.LiteBadge}" CornerRadius="10" Grid.Column="2" Padding="10,4">
-                    <StackPanel Orientation="Horizontal" Spacing="6">
-                        <Ellipse Fill="{DynamicResource Brush.Status.Success}" Height="7" IsVisible="{Binding IsActive}"
-                                 VerticalAlignment="Center" Width="7" />
-                        <TextBlock FontSize="12" FontWeight="SemiBold" Text="{Binding Badge}" />
+                <Border
+                    Background="{DynamicResource Brush.Status.LiteBadge}"
+                    CornerRadius="{StaticResource Radius.Md}"
+                    Grid.Column="2"
+                    Padding="{StaticResource Inset.Badge}">
+                    <StackPanel Orientation="Horizontal" Spacing="{StaticResource Space.Xs}">
+                        <Ellipse
+                            Fill="{DynamicResource Brush.Status.Success}"
+                            Height="{StaticResource Size.Dot.Sm}"
+                            IsVisible="{Binding IsActive}"
+                            VerticalAlignment="Center"
+                            Width="{StaticResource Size.Dot.Sm}" />
+                        <TextBlock FontSize="{StaticResource Type.Label}" FontWeight="SemiBold" Text="{Binding Badge}" />
                     </StackPanel>
                 </Border>
             </Grid>
-            <TextBlock FontSize="14" FontWeight="SemiBold" Text="{Binding Title}" />
-            <TextBlock FontSize="12" Foreground="{DynamicResource Brush.Text.Secondary}"
-                       Text="{Binding Description}" TextWrapping="Wrap" />
+            <TextBlock FontSize="{StaticResource Type.BodyLg}" FontWeight="SemiBold" Text="{Binding Title}" />
+            <TextBlock
+                FontSize="{StaticResource Type.Label}"
+                Foreground="{DynamicResource Brush.Text.Secondary}"
+                Text="{Binding Description}"
+                TextWrapping="Wrap" />
         </StackPanel>
     </Border>
 </UserControl>

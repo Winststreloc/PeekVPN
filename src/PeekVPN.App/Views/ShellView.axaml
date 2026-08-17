@@ -8,26 +8,27 @@
     <Border
         Background="{DynamicResource Brush.Background.App}"
         ClipToBounds="True"
-        CornerRadius="16">
+        CornerRadius="{StaticResource Radius.Xxl}">
         <Grid RowDefinitions="Auto,*">
             <Border
                 Background="Transparent"
                 Grid.Row="0"
-                Height="60"
-                Padding="20,0"
+                Height="{StaticResource Size.TitleBar}"
+                Padding="{StaticResource Inset.TitleBar}"
                 PointerMoved="OnTitleBarPointerMoved"
                 PointerPressed="OnTitleBarPointerPressed"
                 PointerReleased="OnTitleBarPointerReleased">
                 <Grid ColumnDefinitions="64,*,Auto">
                     <Border
                         Background="{DynamicResource Brush.Brand.Shield}"
-                        CornerRadius="12"
-                        Height="40"
+                        CornerRadius="{StaticResource Radius.Nav}"
+                        Height="{StaticResource Size.Icon.Lg}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Width="40">
+                        Width="{StaticResource Size.Icon.Lg}">
                         <TextBlock
-                            FontSize="20"
+                            FontSize="{StaticResource Type.IconLg}"
+                            FontWeight="Bold"
                             Foreground="{DynamicResource Brush.Text.OnDark}"
                             HorizontalAlignment="Center"
                             Text="P"
@@ -38,24 +39,24 @@
                         Grid.Column="1"
                         Margin="20,0"
                         Orientation="Horizontal"
-                        Spacing="14"
+                        Spacing="{StaticResource Space.Md}"
                         VerticalAlignment="Center">
                         <TextBlock
-                            FontSize="20"
+                            FontSize="{StaticResource Type.IconLg}"
                             FontWeight="Bold"
                             Text="{Binding AppTitle}"
                             VerticalAlignment="Center" />
                         <StackPanel
                             Orientation="Horizontal"
-                            Spacing="6"
+                            Spacing="{StaticResource Space.Xs}"
                             VerticalAlignment="Center">
                             <Ellipse
                                 Fill="{Binding Workspace.ConnectionPanel.ActiveState.State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
-                                Height="8"
+                                Height="{StaticResource Size.Dot}"
                                 VerticalAlignment="Center"
-                                Width="8" />
+                                Width="{StaticResource Size.Dot}" />
                             <TextBlock
-                                FontSize="13"
+                                FontSize="{StaticResource Type.Body}"
                                 FontWeight="SemiBold"
                                 Foreground="{Binding Workspace.ConnectionPanel.ActiveState.State, Converter={x:Static conv:ConnectionStateToBrushConverter.Instance}, ConverterParameter=status}"
                                 Text="{Binding Workspace.ConnectionPanel.ActiveState.StatusLabel}"
@@ -66,7 +67,7 @@
                     <StackPanel
                         Grid.Column="2"
                         Orientation="Horizontal"
-                        Spacing="4"
+                        Spacing="{StaticResource Space.Xs}"
                         VerticalAlignment="Center">
                         <Button
                             Classes="GhostIcon"
@@ -74,7 +75,7 @@
                             ToolTip.Tip="Minimize">
                             <TextBlock
                                 FontFamily="{StaticResource SegoeIcons}"
-                                FontSize="14"
+                                FontSize="{StaticResource Type.Chrome}"
                                 HorizontalAlignment="Center"
                                 Text="&#xe921;"
                                 VerticalAlignment="Center" />
@@ -85,7 +86,7 @@
                             ToolTip.Tip="Maximize">
                             <TextBlock
                                 FontFamily="{StaticResource SegoeIcons}"
-                                FontSize="14"
+                                FontSize="{StaticResource Type.Chrome}"
                                 HorizontalAlignment="Center"
                                 Text="&#xe922;"
                                 VerticalAlignment="Center" />
@@ -96,7 +97,7 @@
                             ToolTip.Tip="Close">
                             <TextBlock
                                 FontFamily="{StaticResource SegoeIcons}"
-                                FontSize="14"
+                                FontSize="{StaticResource Type.Chrome}"
                                 HorizontalAlignment="Center"
                                 Text="&#xe8bb;"
                                 VerticalAlignment="Center" />
@@ -107,15 +108,15 @@
 
             <Grid
                 ColumnDefinitions="64,*"
-                ColumnSpacing="16"
+                ColumnSpacing="{StaticResource Space.Lg}"
                 Grid.Row="1"
-                Margin="20,0,20,20">
+                Margin="{StaticResource Inset.Shell}">
                 <Border
                     Background="{DynamicResource Brush.Background.Sidebar}"
-                    CornerRadius="20"
-                    Padding="10">
+                    CornerRadius="{StaticResource Radius.Sidebar}"
+                    Padding="{StaticResource Inset.NavRail}">
                     <Grid RowDefinitions="*,Auto">
-                        <StackPanel HorizontalAlignment="Center" Spacing="8">
+                        <StackPanel HorizontalAlignment="Center" Spacing="{StaticResource Space.Sm}">
                             <Button
                                 Classes="NavIcon"
                                 Classes.active="{Binding IsMapActive}"
@@ -124,7 +125,7 @@
                                 ToolTip.Tip="{Binding NavMap}">
                                 <TextBlock
                                     FontFamily="{StaticResource SegoeIcons}"
-                                    FontSize="18"
+                                    FontSize="{StaticResource Type.Icon}"
                                     Text="&#xE774;" />
                             </Button>
                             <Button
@@ -135,7 +136,7 @@
                                 ToolTip.Tip="{Binding NavStatistics}">
                                 <TextBlock
                                     FontFamily="{StaticResource SegoeIcons}"
-                                    FontSize="18"
+                                    FontSize="{StaticResource Type.Icon}"
                                     Text="&#xE9D2;" />
                             </Button>
                             <Button
@@ -146,7 +147,7 @@
                                 ToolTip.Tip="{Binding NavProfile}">
                                 <TextBlock
                                     FontFamily="{StaticResource SegoeIcons}"
-                                    FontSize="18"
+                                    FontSize="{StaticResource Type.Icon}"
                                     Text="&#xE77B;" />
                             </Button>
                             <Button
@@ -157,7 +158,7 @@
                                 ToolTip.Tip="{Binding NavSettings}">
                                 <TextBlock
                                     FontFamily="{StaticResource SegoeIcons}"
-                                    FontSize="18"
+                                    FontSize="{StaticResource Type.Icon}"
                                     Text="&#xE713;" />
                             </Button>
                         </StackPanel>
@@ -169,7 +170,7 @@
                             ToolTip.Tip="Power">
                             <TextBlock
                                 FontFamily="{StaticResource SegoeIcons}"
-                                FontSize="18"
+                                FontSize="{StaticResource Type.Icon}"
                                 Text="&#xE7E8;" />
                         </Button>
                     </Grid>

@@ -8,13 +8,16 @@ namespace PeekVPN.Infrastructure.Vpn.Platform;
 /// </summary>
 public sealed class LinuxPlatformNetworkServices : IPlatformNetworkServices
 {
-    private const string InterfaceName = "peekvpn0";
+    private readonly ILoggerFactory _loggerFactory;
 
     public LinuxPlatformNetworkServices(ILoggerFactory loggerFactory)
     {
+        _loggerFactory = loggerFactory;
         RoutingManager = new LinuxIpRoutingManager(loggerFactory.CreateLogger<LinuxIpRoutingManager>());
         FirewallManager = new LinuxFirewallManager(loggerFactory.CreateLogger<LinuxFirewallManager>());
-        DnsManager = new LinuxDnsManager(InterfaceName, loggerFactory.CreateLogger<LinuxDnsManager>());
+        DnsManager = new LinuxDnsManager(
+            LinuxWireGuardTunnel.DefaultInterfaceName,
+            loggerFactory.CreateLogger<LinuxDnsManager>());
     }
 
     public IRoutingManager RoutingManager { get; }
@@ -22,6 +25,9 @@ public sealed class LinuxPlatformNetworkServices : IPlatformNetworkServices
     public IFirewallManager FirewallManager { get; }
 
     public IDnsManager DnsManager { get; }
+
+    public IWireGuardTunnel CreateWireGuardTunnel()
+        => new LinuxWireGuardTunnel(_loggerFactory.CreateLogger<LinuxWireGuardTunnel>());
 
     public Task<ITunnelAdapter> CreateTunAdapterAsync(string name, CancellationToken cancellationToken = default)
     {

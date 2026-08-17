@@ -1,0 +1,99 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--
+        AHUG atomic tokens. Values and usage are documented in docs/AHUG.md.
+        Views must reference these keys instead of literal padding/radius/type sizes.
+    -->
+
+    <!-- Spacing (4px grid) -->
+    <x:Double x:Key="Space.None">0</x:Double>
+    <x:Double x:Key="Space.Xxs">2</x:Double>
+    <x:Double x:Key="Space.Xs">4</x:Double>
+    <x:Double x:Key="Space.Sm">8</x:Double>
+    <x:Double x:Key="Space.Md">12</x:Double>
+    <x:Double x:Key="Space.Lg">16</x:Double>
+    <x:Double x:Key="Space.Xl">20</x:Double>
+    <x:Double x:Key="Space.Xxl">24</x:Double>
+    <x:Double x:Key="Space.Xxxl">32</x:Double>
+    <x:Double x:Key="Space.Huge">48</x:Double>
+
+    <Thickness x:Key="Inset.None">0</Thickness>
+    <Thickness x:Key="Inset.Xxs">2</Thickness>
+    <Thickness x:Key="Inset.Xs">4</Thickness>
+    <Thickness x:Key="Inset.Sm">8</Thickness>
+    <Thickness x:Key="Inset.Md">12</Thickness>
+    <Thickness x:Key="Inset.Lg">16</Thickness>
+    <Thickness x:Key="Inset.Xl">20</Thickness>
+    <Thickness x:Key="Inset.Xxl">24</Thickness>
+    <Thickness x:Key="Inset.Xxxl">32</Thickness>
+    <Thickness x:Key="Inset.Sm.Squish">12,8</Thickness>
+    <Thickness x:Key="Inset.Md.Squish">16,10</Thickness>
+    <Thickness x:Key="Inset.Lg.Squish">22,11</Thickness>
+    <Thickness x:Key="Inset.Cta.Compact">18,8</Thickness>
+    <Thickness x:Key="Inset.Search">14,10</Thickness>
+    <Thickness x:Key="Inset.Card">20</Thickness>
+    <Thickness x:Key="Inset.SettingRow">16,12</Thickness>
+    <Thickness x:Key="Inset.SettingRow.Last">16,12,16,16</Thickness>
+    <Thickness x:Key="Inset.TitleBar">20,0</Thickness>
+    <Thickness x:Key="Inset.Shell">20,0,20,20</Thickness>
+    <Thickness x:Key="Inset.NavRail">10</Thickness>
+    <Thickness x:Key="Inset.ServerRow">8,6</Thickness>
+    <Thickness x:Key="Inset.Badge">10,4</Thickness>
+    <Thickness x:Key="Inset.Notice">12,8</Thickness>
+
+    <!-- Radius -->
+    <CornerRadius x:Key="Radius.None">0</CornerRadius>
+    <CornerRadius x:Key="Radius.Xs">2</CornerRadius>
+    <CornerRadius x:Key="Radius.Sm">4</CornerRadius>
+    <CornerRadius x:Key="Radius.Md">6</CornerRadius>
+    <CornerRadius x:Key="Radius.Lg">8</CornerRadius>
+    <CornerRadius x:Key="Radius.Xl">12</CornerRadius>
+    <CornerRadius x:Key="Radius.Xxl">16</CornerRadius>
+    <CornerRadius x:Key="Radius.Full">9999</CornerRadius>
+    <CornerRadius x:Key="Radius.Cta">9999</CornerRadius>
+    <CornerRadius x:Key="Radius.Card">22</CornerRadius>
+    <CornerRadius x:Key="Radius.Search">18</CornerRadius>
+    <CornerRadius x:Key="Radius.Notice">14</CornerRadius>
+    <CornerRadius x:Key="Radius.Sidebar">20</CornerRadius>
+    <CornerRadius x:Key="Radius.Nav">12</CornerRadius>
+    <CornerRadius x:Key="Radius.Icon">10</CornerRadius>
+    <CornerRadius x:Key="Radius.ChartBar">8,8,2,2</CornerRadius>
+
+    <!-- Type -->
+    <x:Double x:Key="Type.Micro">10</x:Double>
+    <x:Double x:Key="Type.Caption">11</x:Double>
+    <x:Double x:Key="Type.Label">12</x:Double>
+    <x:Double x:Key="Type.Body">13</x:Double>
+    <x:Double x:Key="Type.BodyLg">14</x:Double>
+    <x:Double x:Key="Type.TitleSm">15</x:Double>
+    <x:Double x:Key="Type.Title">18</x:Double>
+    <x:Double x:Key="Type.TitleLg">22</x:Double>
+    <x:Double x:Key="Type.Display">28</x:Double>
+    <x:Double x:Key="Type.DisplaySm">24</x:Double>
+    <x:Double x:Key="Type.Icon">18</x:Double>
+    <x:Double x:Key="Type.IconLg">20</x:Double>
+    <x:Double x:Key="Type.Chrome">14</x:Double>
+
+    <!-- Size -->
+    <x:Double x:Key="Size.Dot">8</x:Double>
+    <x:Double x:Key="Size.Dot.Sm">7</x:Double>
+    <x:Double x:Key="Size.Icon.Sm">28</x:Double>
+    <x:Double x:Key="Size.Icon.Md">36</x:Double>
+    <x:Double x:Key="Size.Icon.Lg">40</x:Double>
+    <x:Double x:Key="Size.Icon.Xl">44</x:Double>
+    <x:Double x:Key="Size.Flag">40</x:Double>
+    <x:Double x:Key="Size.Avatar">72</x:Double>
+    <x:Double x:Key="Size.TitleBar">60</x:Double>
+    <x:Double x:Key="Size.Sidebar">64</x:Double>
+    <x:Double x:Key="Size.Cta.Min">160</x:Double>
+    <x:Double x:Key="Size.Cta.OutlineMin">140</x:Double>
+    <x:Double x:Key="Size.Ghost.Width">46</x:Double>
+    <x:Double x:Key="Size.Ghost.Height">32</x:Double>
+
+    <!-- Stroke -->
+    <Thickness x:Key="Stroke.None">0</Thickness>
+    <Thickness x:Key="Stroke.Hairline">1</Thickness>
+    <Thickness x:Key="Stroke.Accent">1.5</Thickness>
+    <Thickness x:Key="Stroke.Live">2.5</Thickness>
+    <x:Double x:Key="Stroke.Dash">1.5</x:Double>
+</ResourceDictionary>

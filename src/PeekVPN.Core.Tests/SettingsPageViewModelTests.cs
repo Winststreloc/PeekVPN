@@ -14,8 +14,8 @@ public sealed class SettingsPageViewModelTests
 
         Assert.Equal(SettingsSection.General, viewModel.SelectedSection);
         Assert.True(viewModel.IsGeneralSelected);
-        Assert.False(viewModel.IsVpnConnectionSelected);
-        Assert.False(viewModel.IsSecurityAndPrivacySelected);
+        Assert.False(viewModel.IsAppearanceSelected);
+        Assert.False(viewModel.IsKillSwitchSelected);
     }
 
     [Fact]
@@ -27,8 +27,6 @@ public sealed class SettingsPageViewModelTests
             AutoConnectUseFastestServer = false,
             AutoConnectServer = Strings.SettingsServerAmsterdam,
             SplitTunneling = true,
-            SplitTunnelingForDomains = true,
-            SplitTunnelingForApplications = true,
             KillSwitch = false,
             SelectedKillSwitchMode = Strings.SettingsKillSwitchHardMode,
             CustomDns = true,
@@ -48,8 +46,8 @@ public sealed class SettingsPageViewModelTests
         Assert.True(viewModel.AutoConnectUseFastestServer);
         Assert.Equal(Strings.SettingsServerPlaceholder, viewModel.AutoConnectServer);
         Assert.False(viewModel.SplitTunneling);
-        Assert.False(viewModel.SplitTunnelingForDomains);
-        Assert.False(viewModel.SplitTunnelingForApplications);
+        Assert.True(viewModel.IsSplitTunnelingDomainsEmpty);
+        Assert.True(viewModel.IsSplitTunnelingApplicationsEmpty);
         Assert.True(viewModel.KillSwitch);
         Assert.Equal(Strings.SettingsKillSwitchSoftMode, viewModel.SelectedKillSwitchMode);
         Assert.False(viewModel.CustomDns);

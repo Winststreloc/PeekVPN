@@ -15,4 +15,6 @@ public interface IPlatformNetworkServices
     IFirewallManager FirewallManager { get; }
 
     IDnsManager DnsManager { get; }
+
+    IWireGuardTunnel CreateWireGuardTunnel();
 }

@@ -13,18 +13,19 @@
     <Border
         Classes="Card"
         MinHeight="180"
-        Padding="12">
-        <Grid RowDefinitions="Auto,*" RowSpacing="8">
+        Padding="{StaticResource Inset.Md}">
+        <Grid RowDefinitions="Auto,*" RowSpacing="{StaticResource Space.Sm}">
             <Grid ColumnDefinitions="*,Auto">
                 <TextBlock
-                    FontSize="14"
+                    FontSize="{StaticResource Type.BodyLg}"
                     FontWeight="SemiBold"
                     Foreground="{DynamicResource Brush.Text.Primary}"
                     Text="{Binding Title}"
                     VerticalAlignment="Center" />
                 <TextBlock
                     Grid.Column="1"
-                    FontSize="11"
+                    Classes="Caption"
+                    FontSize="{StaticResource Type.Caption}"
                     Foreground="{DynamicResource Brush.Text.Muted}"
                     IsVisible="{Binding ActiveServer, Converter={x:Static ObjectConverters.IsNotNull}}"
                     Text="{Binding ActiveServer.DisplayName}"
@@ -35,14 +36,14 @@
             <Border
                 Background="{DynamicResource Brush.Map.Water}"
                 ClipToBounds="True"
-                CornerRadius="12"
+                CornerRadius="{StaticResource Radius.Xl}"
                 Grid.Row="1"
                 MinHeight="120">
                 <ctrl:InteractiveMapControl
                     FocusTarget="{Binding FocusTarget}"
                     MarkerCommand="{Binding ActivateMarkerCommand}"
                     Markers="{Binding Markers}"
-                    Margin="8" />
+                    Margin="{StaticResource Inset.Sm}" />
             </Border>
         </Grid>
     </Border>

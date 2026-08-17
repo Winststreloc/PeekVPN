@@ -24,7 +24,7 @@
         </DataTemplate>
     </UserControl.DataTemplates>
 
-    <Border Classes="Card" Padding="12">
+    <Border Classes="Card" Padding="{StaticResource Inset.Md}">
         <ContentControl Content="{Binding ActiveState}" />
     </Border>
 </UserControl>

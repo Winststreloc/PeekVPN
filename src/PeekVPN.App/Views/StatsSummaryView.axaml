@@ -9,33 +9,37 @@
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     mc:Ignorable="d">
-    <Border Classes="Card" Padding="14">
-        <StackPanel Spacing="8">
+    <Border Classes="Card" Padding="{StaticResource Inset.Md}">
+        <StackPanel Spacing="{StaticResource Space.Sm}">
             <TextBlock
-                FontSize="12"
+                FontSize="{StaticResource Type.Label}"
                 FontWeight="SemiBold"
                 Foreground="{DynamicResource Brush.Text.Secondary}"
                 Text="{Binding Title}" />
 
-            <StackPanel Spacing="2">
+            <StackPanel Spacing="{StaticResource Space.Xxs}">
                 <TextBlock
-                    FontSize="11"
+                    Classes="Caption"
+                    FontSize="{StaticResource Type.Caption}"
                     Foreground="{DynamicResource Brush.Text.Muted}"
                     Text="{Binding PingLabel}" />
                 <TextBlock
-                    FontSize="14"
+                    Classes="Mono"
+                    FontSize="{StaticResource Type.BodyLg}"
                     FontWeight="SemiBold"
                     Foreground="{DynamicResource Brush.Text.Primary}"
                     Text="{Binding PingValue}" />
             </StackPanel>
 
-            <StackPanel Spacing="2">
+            <StackPanel Spacing="{StaticResource Space.Xxs}">
                 <TextBlock
-                    FontSize="11"
+                    Classes="Caption"
+                    FontSize="{StaticResource Type.Caption}"
                     Foreground="{DynamicResource Brush.Text.Muted}"
                     Text="{Binding SpeedLabel}" />
                 <TextBlock
-                    FontSize="12"
+                    Classes="Mono"
+                    FontSize="{StaticResource Type.Label}"
                     FontWeight="SemiBold"
                     Foreground="{DynamicResource Brush.Text.Primary}"
                     Text="{Binding SpeedValue}"

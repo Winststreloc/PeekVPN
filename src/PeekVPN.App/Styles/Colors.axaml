@@ -1,47 +1,112 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="Color.Background.App">#F5F1EA</Color>
-    <Color x:Key="Color.Background.Surface">#FFFCF7</Color>
-    <Color x:Key="Color.Background.Card">#FFFFFF</Color>
-    <Color x:Key="Color.Background.Sidebar">#EEE8DE</Color>
-    <Color x:Key="Color.Background.NavActive">#E3D4BE</Color>
-    <Color x:Key="Color.Background.Search">#EAE2D6</Color>
-    <Color x:Key="Color.Background.Upsell">#EAE2D6</Color>
-    <Color x:Key="Color.Background.ButtonDark">#241A12</Color>
-    <Color x:Key="Color.Background.IconMuted">#DED4C7</Color>
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <Color x:Key="Color.Background.App">#F5F1EA</Color>
+            <Color x:Key="Color.Background.Surface">#FFFCF7</Color>
+            <Color x:Key="Color.Background.Card">#FFFFFF</Color>
+            <Color x:Key="Color.Background.Sidebar">#EEE8DE</Color>
+            <Color x:Key="Color.Background.NavActive">#E3D4BE</Color>
+            <Color x:Key="Color.Background.Search">#EAE2D6</Color>
+            <Color x:Key="Color.Background.Upsell">#EAE2D6</Color>
+            <Color x:Key="Color.Background.ButtonDark">#241A12</Color>
+            <Color x:Key="Color.Background.IconMuted">#DED4C7</Color>
 
-    <Color x:Key="Color.Text.Primary">#21170F</Color>
-    <Color x:Key="Color.Text.Secondary">#665546</Color>
-    <Color x:Key="Color.Text.Muted">#8F8173</Color>
-    <Color x:Key="Color.Text.OnAccent">#21170F</Color>
-    <Color x:Key="Color.Text.OnDark">#FFF9F0</Color>
-    <Color x:Key="Color.Text.Danger">#C83F36</Color>
-    <Color x:Key="Color.Text.Link">#7A4F18</Color>
+            <Color x:Key="Color.Text.Primary">#21170F</Color>
+            <Color x:Key="Color.Text.Secondary">#665546</Color>
+            <Color x:Key="Color.Text.Muted">#8F8173</Color>
+            <Color x:Key="Color.Text.OnAccent">#21170F</Color>
+            <Color x:Key="Color.Text.OnDark">#FFF9F0</Color>
+            <Color x:Key="Color.Text.Danger">#C83F36</Color>
+            <Color x:Key="Color.Text.Link">#7A4F18</Color>
 
-    <Color x:Key="Color.Accent.Primary">#F2B928</Color>
-    <Color x:Key="Color.Accent.PrimaryHover">#FFC94D</Color>
-    <Color x:Key="Color.Brand.Shield">#D89A00</Color>
+            <Color x:Key="Color.Accent.Primary">#F2B928</Color>
+            <Color x:Key="Color.Accent.PrimaryHover">#FFC94D</Color>
+            <Color x:Key="Color.Brand.Shield">#D89A00</Color>
 
-    <Color x:Key="Color.Status.Danger">#D93D35</Color>
-    <Color x:Key="Color.Status.Success">#299B61</Color>
-    <Color x:Key="Color.Status.Warning">#E0A800</Color>
-    <Color x:Key="Color.Status.Neutral">#817568</Color>
-    <Color x:Key="Color.Status.ActiveBadge">#E7F6EC</Color>
-    <Color x:Key="Color.Status.ActiveBadgeText">#2F8F57</Color>
-    <Color x:Key="Color.Status.LiteBadge">#EEE4D6</Color>
+            <Color x:Key="Color.Status.Danger">#D93D35</Color>
+            <Color x:Key="Color.Status.Success">#299B61</Color>
+            <Color x:Key="Color.Status.Warning">#E0A800</Color>
+            <Color x:Key="Color.Status.Neutral">#817568</Color>
+            <Color x:Key="Color.Status.ActiveBadge">#E7F6EC</Color>
+            <Color x:Key="Color.Status.ActiveBadgeText">#2F8F57</Color>
+            <Color x:Key="Color.Status.LiteBadge">#EEE4D6</Color>
 
-    <Color x:Key="Color.Server.Connected">#D8F0E2</Color>
-    <Color x:Key="Color.Server.ConnectedHover">#E8F7EE</Color>
-    <Color x:Key="Color.Server.Connecting">#E4E0DA</Color>
-    <Color x:Key="Color.Server.ConnectingHover">#EEEBE6</Color>
-    <Color x:Key="Color.Server.Paused">#F5E6B8</Color>
-    <Color x:Key="Color.Server.PausedHover">#FAF0D2</Color>
-    <Color x:Key="Color.Server.BorderConnected">#3FA66A</Color>
-    <Color x:Key="Color.Server.BorderConnecting">#8A8074</Color>
-    <Color x:Key="Color.Server.BorderPaused">#D4A017</Color>
-    <Color x:Key="Color.Map.Land">#E0D4C4</Color>
-    <Color x:Key="Color.Map.Water">#F7F1E8</Color>
-    <Color x:Key="Color.Map.Marker">#C9A227</Color>
+            <Color x:Key="Color.Server.Connected">#D8F0E2</Color>
+            <Color x:Key="Color.Server.ConnectedHover">#E8F7EE</Color>
+            <Color x:Key="Color.Server.Connecting">#E4E0DA</Color>
+            <Color x:Key="Color.Server.ConnectingHover">#EEEBE6</Color>
+            <Color x:Key="Color.Server.Paused">#F5E6B8</Color>
+            <Color x:Key="Color.Server.PausedHover">#FAF0D2</Color>
+            <Color x:Key="Color.Server.BorderConnected">#3FA66A</Color>
+            <Color x:Key="Color.Server.BorderConnecting">#8A8074</Color>
+            <Color x:Key="Color.Server.BorderPaused">#D4A017</Color>
 
-    <Color x:Key="Color.Border.Subtle">#E4D8C8</Color>
-    <Color x:Key="Color.Border.Card">#EDE3D6</Color>
+            <Color x:Key="Color.Map.Land">#E0D4C4</Color>
+            <Color x:Key="Color.Map.Water">#F7F1E8</Color>
+            <Color x:Key="Color.Map.Marker">#C9A227</Color>
+            <Color x:Key="Color.Map.MarkerConnected">#3FA66A</Color>
+            <Color x:Key="Color.Map.MarkerConnectedRing">#E7F6EC</Color>
+            <Color x:Key="Color.Map.MarkerPaused">#D4A017</Color>
+            <Color x:Key="Color.Map.MarkerPausedFill">#F5E6B8</Color>
+            <Color x:Key="Color.Map.MarkerIdle">#7A6A58</Color>
+            <Color x:Key="Color.Map.MarkerIdleFill">#E8DFD3</Color>
+
+            <Color x:Key="Color.Border.Subtle">#E4D8C8</Color>
+            <Color x:Key="Color.Border.Card">#EDE3D6</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <Color x:Key="Color.Background.App">#181412</Color>
+            <Color x:Key="Color.Background.Surface">#211B18</Color>
+            <Color x:Key="Color.Background.Card">#2B2420</Color>
+            <Color x:Key="Color.Background.Sidebar">#1E1916</Color>
+            <Color x:Key="Color.Background.NavActive">#40352E</Color>
+            <Color x:Key="Color.Background.Search">#352C27</Color>
+            <Color x:Key="Color.Background.Upsell">#352C27</Color>
+            <Color x:Key="Color.Background.ButtonDark">#E9DED2</Color>
+            <Color x:Key="Color.Background.IconMuted">#403630</Color>
+
+            <Color x:Key="Color.Text.Primary">#F7EEE5</Color>
+            <Color x:Key="Color.Text.Secondary">#CDBFB2</Color>
+            <Color x:Key="Color.Text.Muted">#9F9084</Color>
+            <Color x:Key="Color.Text.OnAccent">#2C2118</Color>
+            <Color x:Key="Color.Text.OnDark">#2C2118</Color>
+            <Color x:Key="Color.Text.Danger">#FF9A89</Color>
+            <Color x:Key="Color.Text.Link">#E7C986</Color>
+
+            <Color x:Key="Color.Accent.Primary">#E8C15A</Color>
+            <Color x:Key="Color.Accent.PrimaryHover">#F6D67F</Color>
+            <Color x:Key="Color.Brand.Shield">#E8C15A</Color>
+
+            <Color x:Key="Color.Status.Danger">#FF7B72</Color>
+            <Color x:Key="Color.Status.Success">#72C995</Color>
+            <Color x:Key="Color.Status.Warning">#F0C45E</Color>
+            <Color x:Key="Color.Status.Neutral">#9F9084</Color>
+            <Color x:Key="Color.Status.ActiveBadge">#1D412D</Color>
+            <Color x:Key="Color.Status.ActiveBadgeText">#8CE2AD</Color>
+            <Color x:Key="Color.Status.LiteBadge">#4A3A2A</Color>
+
+            <Color x:Key="Color.Server.Connected">#1F5034</Color>
+            <Color x:Key="Color.Server.ConnectedHover">#286140</Color>
+            <Color x:Key="Color.Server.Connecting">#49413B</Color>
+            <Color x:Key="Color.Server.ConnectingHover">#5C534C</Color>
+            <Color x:Key="Color.Server.Paused">#5A4720</Color>
+            <Color x:Key="Color.Server.PausedHover">#705A29</Color>
+            <Color x:Key="Color.Server.BorderConnected">#72C995</Color>
+            <Color x:Key="Color.Server.BorderConnecting">#C4B9AF</Color>
+            <Color x:Key="Color.Server.BorderPaused">#F0C45E</Color>
+
+            <Color x:Key="Color.Map.Land">#4D4139</Color>
+            <Color x:Key="Color.Map.Water">#211B18</Color>
+            <Color x:Key="Color.Map.Marker">#E8C15A</Color>
+            <Color x:Key="Color.Map.MarkerConnected">#72C995</Color>
+            <Color x:Key="Color.Map.MarkerConnectedRing">#E7F6EC</Color>
+            <Color x:Key="Color.Map.MarkerPaused">#F0C45E</Color>
+            <Color x:Key="Color.Map.MarkerPausedFill">#5A4720</Color>
+            <Color x:Key="Color.Map.MarkerIdle">#9F9084</Color>
+            <Color x:Key="Color.Map.MarkerIdleFill">#403630</Color>
+
+            <Color x:Key="Color.Border.Subtle">#4A3D35</Color>
+            <Color x:Key="Color.Border.Card">#493C35</Color>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

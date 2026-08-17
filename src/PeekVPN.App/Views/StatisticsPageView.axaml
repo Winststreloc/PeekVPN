@@ -5,53 +5,53 @@
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ScrollViewer HorizontalScrollBarVisibility="Disabled">
-        <StackPanel MaxWidth="1120" Spacing="18">
-            <StackPanel Spacing="4">
-                <TextBlock FontSize="28" FontWeight="Bold" Text="{Binding Title}" />
+        <StackPanel MaxWidth="1120" Spacing="{StaticResource Space.Xxl}">
+            <StackPanel Spacing="{StaticResource Space.Xs}">
+                <TextBlock Classes="PageTitle" FontSize="{StaticResource Type.Display}" FontWeight="Bold" Text="{Binding Title}" />
                 <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding Subtitle}" />
             </StackPanel>
 
-            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="14">
+            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="{StaticResource Space.Md}">
                 <Border Classes="Card">
                     <StackPanel Spacing="8">
                         <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding ProtectedTimeLabel}" />
-                        <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding ProtectedTimeValue}" />
+                        <TextBlock FontSize="{StaticResource Type.DisplaySm}" FontWeight="Bold" Text="{Binding ProtectedTimeValue}" />
                     </StackPanel>
                 </Border>
                 <Border Classes="Card" Grid.Column="1">
                     <StackPanel Spacing="8">
                         <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding DataProtectedLabel}" />
-                        <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding DataProtectedValue}" />
+                        <TextBlock FontSize="{StaticResource Type.DisplaySm}" FontWeight="Bold" Text="{Binding DataProtectedValue}" />
                     </StackPanel>
                 </Border>
                 <Border Classes="Card" Grid.Column="2">
                     <StackPanel Spacing="8">
                         <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding AverageSpeedLabel}" />
-                        <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding AverageSpeedValue}" />
+                        <TextBlock FontSize="{StaticResource Type.DisplaySm}" FontWeight="Bold" Text="{Binding AverageSpeedValue}" />
                     </StackPanel>
                 </Border>
                 <Border Classes="Card" Grid.Column="3">
                     <StackPanel Spacing="8">
                         <TextBlock Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding ConnectionsLabel}" />
-                        <TextBlock FontSize="24" FontWeight="Bold" Text="{Binding ConnectionsValue}" />
+                        <TextBlock FontSize="{StaticResource Type.DisplaySm}" FontWeight="Bold" Text="{Binding ConnectionsValue}" />
                     </StackPanel>
                 </Border>
             </Grid>
 
-            <Grid ColumnDefinitions="*,280" ColumnSpacing="18">
+            <Grid ColumnDefinitions="*,280" ColumnSpacing="{StaticResource Space.Xxl}">
                 <Border Classes="Card">
                     <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="10">
                         <TextBlock FontSize="18" FontWeight="SemiBold" Text="{Binding ActivityTitle}" />
                         <TextBlock Grid.Row="1" Foreground="{DynamicResource Brush.Text.Secondary}" Text="{Binding ActivitySubtitle}" />
                         <Grid Grid.Row="2" Height="240" Margin="0,14,0,6">
                             <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="12" VerticalAlignment="Bottom">
-                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="0" Height="104" VerticalAlignment="Bottom" />
-                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="1" Height="156" VerticalAlignment="Bottom" />
-                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="2" Height="86" VerticalAlignment="Bottom" />
-                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="3" Height="188" VerticalAlignment="Bottom" />
-                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="4" Height="135" VerticalAlignment="Bottom" />
-                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="5" Height="211" VerticalAlignment="Bottom" />
-                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="8,8,2,2" Grid.Column="6" Height="165" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="{StaticResource Radius.ChartBar}" Grid.Column="0" Height="104" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="{StaticResource Radius.ChartBar}" Grid.Column="1" Height="156" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="{StaticResource Radius.ChartBar}" Grid.Column="2" Height="86" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="{StaticResource Radius.ChartBar}" Grid.Column="3" Height="188" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="{StaticResource Radius.ChartBar}" Grid.Column="4" Height="135" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="{StaticResource Radius.ChartBar}" Grid.Column="5" Height="211" VerticalAlignment="Bottom" />
+                                <Border Background="{DynamicResource Brush.Accent.Primary}" CornerRadius="{StaticResource Radius.ChartBar}" Grid.Column="6" Height="165" VerticalAlignment="Bottom" />
                             </Grid>
                         </Grid>
                         <Grid Grid.Row="3" ColumnDefinitions="*,Auto" VerticalAlignment="Center">

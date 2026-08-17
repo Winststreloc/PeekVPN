@@ -46,7 +46,28 @@ internal static class WireGuardConfigParser
             GetList(interfaceSection.GetValueOrDefault("DNS")),
             GetList(peerSection.GetValueOrDefault("AllowedIPs")),
             peerSection.GetValueOrDefault("Endpoint"),
-            int.TryParse(peerSection.GetValueOrDefault("PersistentKeepalive"), CultureInfo.InvariantCulture, out var pk) ? pk : null);
+            int.TryParse(peerSection.GetValueOrDefault("PersistentKeepalive"), CultureInfo.InvariantCulture, out var pk) ? pk : null,
+            DecodeKey(interfaceSection.GetValueOrDefault("PrivateKey")),
+            DecodeKey(peerSection.GetValueOrDefault("PublicKey")),
+            DecodeKey(peerSection.GetValueOrDefault("PresharedKey")));
+    }
+
+    private static byte[]? DecodeKey(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        try
+        {
+            var bytes = Convert.FromBase64String(value.Trim());
+            return bytes.Length == 32 ? bytes : null;
+        }
+        catch (FormatException)
+        {
+            return null;
+        }
     }
 
     private static IReadOnlyList<string> GetAddresses(string? value)

@@ -15,7 +15,7 @@
         </Style>
         <Style Selector="Border.ServerRowBg">
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="CornerRadius" Value="{StaticResource Radius.Icon}" />
         </Style>
         <Style Selector="Panel.ServerRowShell.StateConnected Border.ServerRowBg">
             <Setter Property="Background" Value="{DynamicResource Brush.Server.Connected}" />
@@ -61,8 +61,8 @@
         <Style Selector="Button.ServerRow">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Padding" Value="8,6" />
+            <Setter Property="CornerRadius" Value="{StaticResource Radius.Icon}" />
+            <Setter Property="Padding" Value="{StaticResource Inset.ServerRow}" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="Cursor" Value="Hand" />
@@ -85,28 +85,28 @@
         </DataTemplate>
     </UserControl.DataTemplates>
 
-    <Border Classes="Card" Padding="12">
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" RowSpacing="4">
+    <Border Classes="Card" Padding="{StaticResource Inset.Md}">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" RowSpacing="{StaticResource Space.Xs}">
             <TextBox
                 Classes="SearchBox"
                 Margin="0,0,0,8"
                 PlaceholderText="{Binding SearchServersWatermark}"
                 Text="{Binding SearchQuery}" />
             <TextBlock
-                FontSize="12"
+                FontSize="{StaticResource Type.Label}"
                 FontWeight="SemiBold"
                 Foreground="{DynamicResource Brush.Text.Secondary}"
                 Grid.Row="1"
                 Text="{Binding RecentConnectionsTitle}" />
             <TextBlock
-                FontSize="11"
+                FontSize="{StaticResource Type.Caption}"
                 Foreground="{DynamicResource Brush.Text.Muted}"
                 Grid.Row="2"
                 IsVisible="{Binding StatusMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
                 Text="{Binding StatusMessage}" />
             <StackPanel Grid.Row="3" Spacing="0">
                 <TextBlock
-                    FontSize="11"
+                    FontSize="{StaticResource Type.Caption}"
                     Foreground="{DynamicResource Brush.Text.Muted}"
                     IsVisible="{Binding RecentEmptyMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
                     Margin="0,0,0,4"
@@ -115,7 +115,7 @@
                 <ItemsControl ItemsSource="{Binding RecentServers}" />
             </StackPanel>
             <TextBlock
-                FontSize="12"
+                FontSize="{StaticResource Type.Label}"
                 FontWeight="SemiBold"
                 Foreground="{DynamicResource Brush.Text.Secondary}"
                 Grid.Row="4"

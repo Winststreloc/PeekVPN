@@ -6,12 +6,12 @@
     xmlns:ctrl="using:PeekVPN.App.Controls"
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StackPanel Spacing="8">
-        <Grid ColumnDefinitions="40,*" ColumnSpacing="10" MinHeight="40">
-            <Grid Height="40" Width="40">
+    <StackPanel Spacing="{StaticResource Space.Sm}">
+        <Grid ColumnDefinitions="40,*" ColumnSpacing="{StaticResource Space.Sm}" MinHeight="{StaticResource Size.Flag}">
+            <Grid Height="{StaticResource Size.Flag}" Width="{StaticResource Size.Flag}">
                 <Border Background="{DynamicResource Brush.Background.IconMuted}"
                         ClipToBounds="True"
-                        CornerRadius="16"
+                        CornerRadius="{StaticResource Radius.Xl}"
                         Height="32"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
@@ -48,7 +48,7 @@
                 </Viewbox>
             </Grid>
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
+                <TextBlock FontSize="{StaticResource Type.TitleSm}" FontWeight="Bold" Text="{Binding Headline}" TextTrimming="CharacterEllipsis" />
             </StackPanel>
         </Grid>
         <TextBlock Foreground="{DynamicResource Brush.Text.Danger}" Text="{Binding LastError}" TextWrapping="Wrap" />

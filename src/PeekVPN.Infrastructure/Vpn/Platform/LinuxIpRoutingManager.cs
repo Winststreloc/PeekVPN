@@ -17,7 +17,8 @@ public sealed class LinuxIpRoutingManager : IRoutingManager
 
     public async Task AddRouteAsync(Route route, CancellationToken cancellationToken = default)
     {
-        var args = $"route add {route.Destination}";
+        var command = route.Replace || route.Destination == "0.0.0.0/0" ? "route replace" : "route add";
+        var args = $"{command} {route.Destination}";
 
         if (!string.IsNullOrWhiteSpace(route.Gateway))
         {
@@ -76,6 +77,64 @@ public sealed class LinuxIpRoutingManager : IRoutingManager
         if (exitCode != 0)
         {
             throw new InvalidOperationException($"Failed to flush routes for '{interfaceName}': {error}");
+        }
+    }
+
+    public async Task PreserveHostRouteAsync(string hostIp, CancellationToken cancellationToken = default)
+    {
+        if (!System.Net.IPAddress.TryParse(hostIp, out _))
+        {
+            _logger.LogWarning("Endpoint host '{EndpointHost}' is not an IP address; cannot add a host route.", hostIp);
+            return;
+        }
+
+        var (exitCode, output, error) = await ShellHelper.RunAsync(
+            "ip",
+            $"route get {hostIp}",
+            cancellationToken)
+            .ConfigureAwait(false);
+
+        if (exitCode != 0)
+        {
+            _logger.LogWarning("Could not determine route to endpoint {EndpointIp}: {Error}", hostIp, error);
+            return;
+        }
+
+        var parts = output.Split([' ', '\t'], StringSplitOptions.RemoveEmptyEntries);
+        string? gateway = null;
+        string? iface = null;
+
+        for (var i = 0; i < parts.Length - 1; i++)
+        {
+            if (parts[i] == "via")
+            {
+                gateway = parts[i + 1];
+            }
+            else if (parts[i] == "dev")
+            {
+                iface = parts[i + 1];
+            }
+        }
+
+        if (iface is null)
+        {
+            _logger.LogWarning("Could not determine physical interface for endpoint {EndpointIp}; route output: {Output}", hostIp, output);
+            return;
+        }
+
+        _logger.LogInformation(
+            "Adding host route to endpoint {EndpointIp} via {Gateway} dev {Interface} to avoid routing loop.",
+            hostIp,
+            gateway ?? "(direct)",
+            iface);
+
+        try
+        {
+            await AddRouteAsync(new Route(hostIp, gateway, iface), cancellationToken).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Failed to add endpoint route to {EndpointIp}.", hostIp);
         }
     }
 }

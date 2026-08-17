@@ -5,7 +5,7 @@
     xmlns:vm="using:PeekVPN.App.ViewModels"
     xmlns:views="using:PeekVPN.App.Views"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid ColumnSpacing="14">
+    <Grid ColumnSpacing="{StaticResource Space.Md}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="240" MinWidth="200" MaxWidth="280" />
             <ColumnDefinition Width="*" MinWidth="360" />
@@ -13,8 +13,8 @@
 
         <views:ServerBrowserView DataContext="{Binding ServerBrowser}" />
 
-        <Grid Grid.Column="1" RowDefinitions="Auto,*" RowSpacing="14">
-            <Grid ColumnSpacing="14">
+        <Grid Grid.Column="1" RowDefinitions="Auto,*" RowSpacing="{StaticResource Space.Md}">
+            <Grid ColumnSpacing="{StaticResource Space.Md}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" MinWidth="240" />
                     <ColumnDefinition Width="200" MinWidth="160" MaxWidth="240" />

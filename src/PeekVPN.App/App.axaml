@@ -12,11 +12,13 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://PeekVPN/Styles/Tokens.axaml" />
                 <ResourceInclude Source="avares://PeekVPN/Styles/Colors.axaml" />
                 <ResourceInclude Source="avares://PeekVPN/Styles/Brushes.axaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <FontFamily x:Key="AppFontFamily">avares://PeekVPN/Assets/Fonts/#Inter</FontFamily>
+            <FontFamily x:Key="MonoFontFamily">Cascadia Mono, Consolas, Courier New, monospace</FontFamily>
             <FontFamily x:Key="SegoeIcons">avares://PeekVPN/Assets/Fonts/#Segoe Fluent Icons</FontFamily>
         </ResourceDictionary>
     </Application.Resources>
@@ -27,9 +29,12 @@
 
         <Style Selector="Window">
             <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
+            <Setter Property="Background" Value="{DynamicResource Brush.Background.App}" />
         </Style>
         <Style Selector="TextBlock">
             <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />
+            <Setter Property="Foreground" Value="{DynamicResource Brush.Text.Primary}" />
         </Style>
         <Style Selector="SelectableTextBlock">
             <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}" />

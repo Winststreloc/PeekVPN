@@ -36,7 +36,8 @@ public sealed class ConnectionStateToBrushConverter : IValueConverter
 
     private static IBrush ResolveBrush(string key)
     {
-        if (Application.Current?.TryGetResource(key, ThemeVariant.Default, out var resource) == true
+        var theme = Application.Current?.ActualThemeVariant ?? ThemeVariant.Default;
+        if (Application.Current?.TryGetResource(key, theme, out var resource) == true
             && resource is IBrush brush)
         {
             return brush;
